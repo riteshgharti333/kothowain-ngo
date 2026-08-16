@@ -2,7 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FiFacebook, FiTwitter, FiLinkedin, FiYoutube, FiPhone, FiMail, FiMapPin, FiClock, FiArrowUpRight, FiHeart } from "react-icons/fi";
+import {
+  FiFacebook,
+  FiTwitter,
+  FiLinkedin,
+  FiYoutube,
+  FiPhone,
+  FiMail,
+  FiMapPin,
+  FiClock,
+  FiArrowUpRight,
+  FiHeart,
+} from "react-icons/fi";
 
 const Footer = () => {
   const quickLinks = [
@@ -29,7 +40,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer id="contact" className="bg-teal-950 text-cream-50/70 relative overflow-hidden pt-[80px]">
+    <footer
+      id="contact"
+      className="bg-teal-950 text-cream-50/70 relative overflow-hidden pt-[80px]"
+    >
       {/* Decorative top border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-teal-700 to-amber-500" />
 
@@ -45,7 +59,7 @@ const Footer = () => {
               <h3 className="font-display text-2xl lg:text-3xl text-teal-950 font-semibold mb-2">
                 Ready to make a difference?
               </h3>
-              <p className="text-teal-950/70 text-sm">
+              <p className="text-white text-sm">
                 Your support can change lives in the Chittagong Hill Tracts.
               </p>
             </div>
@@ -66,13 +80,17 @@ const Footer = () => {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 mb-5">
               <div className="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center">
-                <span className="font-display font-bold text-teal-950 text-lg">K</span>
+                <span className="font-display font-bold text-teal-950 text-lg">
+                  K
+                </span>
               </div>
-              <span className="font-display font-bold text-xl text-cream-50">Kothowain</span>
+              <span className="font-display font-bold text-xl text-cream-50">
+                Kothowain
+              </span>
             </Link>
             <p className="text-[13.5px] leading-[1.7] max-w-[280px] mb-6">
-              Vulnerable People&apos;s Development Organization, working across the
-              Chittagong Hill Tracts, Bandarban, Bangladesh.
+              Vulnerable People&apos;s Development Organization, working across
+              the Chittagong Hill Tracts, Bandarban, Bangladesh.
             </p>
             {/* Socials */}
             <div className="flex items-center gap-3">
@@ -161,7 +179,10 @@ const Footer = () => {
             <span>Made with</span>
             <FiHeart className="w-4 h-4 text-amber-400 fill-amber-400" />
             <span>by</span>
-            <a href="#" className="text-amber-400 hover:text-amber-300 transition-colors">
+            <a
+              href="#"
+              className="text-amber-400 hover:text-amber-300 transition-colors"
+            >
               Kothowain Team
             </a>
           </div>
