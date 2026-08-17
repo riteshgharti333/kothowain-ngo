@@ -46,7 +46,7 @@ const Volunteer = () => {
           >
             <div className="aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl relative">
               <Image
-                src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&h=800&fit=crop&q=80"
+                src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop&q=80"
                 alt="Volunteer helping community"
                 fill
                 className="object-cover"

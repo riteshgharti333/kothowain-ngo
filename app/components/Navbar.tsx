@@ -77,26 +77,32 @@ const Navbar = () => {
 
   const navLinks = [
     { label: "Home", href: "/" },
+
     { label: "About Us", href: "/about" },
+
     {
       label: "Our Work",
-      href: "#",
+      href: "/our-work",
       dropdown: [
-        { label: "Education", href: "#education" },
-        { label: "Healthcare", href: "#healthcare" },
-        { label: "Livelihood", href: "#livelihood" },
-        { label: "Climate Action", href: "#climate" },
+        { label: "Education", href: "/our-work/education" },
+        { label: "Food Support", href: "/our-work/food" },
+        { label: "Clean Water", href: "/our-work/water" },
+        { label: "Medical Support", href: "/our-work/medical-support" },
       ],
     },
-    { label: "Our Impact", href: "#impact" },
-    { label: "Stories", href: "#stories" },
+
+    { label: "Our Impact", href: "/our-impact" },
+
+    { label: "Stories", href: "/stories" },
+
     {
       label: "Get Involved",
       href: "#",
       dropdown: [
-        { label: "Volunteer", href: "#volunteer" },
-        { label: "Partner With Us", href: "#partner" },
-        { label: "Careers", href: "#careers" },
+        { label: "Volunteer", href: "/volunteer" },
+        { label: "Team", href: "/team" },
+        { label: "Gallery", href: "/gallery" },
+        { label: "Contact", href: "/contact" },
       ],
     },
   ];
@@ -232,7 +238,7 @@ const Navbar = () => {
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-3">
             <Link
-              href="#donate"
+              href="/donate"
               className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm bg-amber-500 text-teal-950 transition-all duration-300 hover:bg-teal-950 hover:text-amber-400 hover:shadow-[0_8px_24px_-8px_rgba(232,163,23,0.4)] hover:-translate-y-0.5 active:scale-95"
             >
               Donate Now
@@ -328,7 +334,7 @@ const Navbar = () => {
                   </div>
                 ))}
                 <Link
-                  href="#donate"
+                  href="/donate"
                   className="mt-3 w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold text-sm bg-amber-500 text-teal-950 transition-all duration-300 hover:bg-teal-950 hover:text-amber-400 active:scale-95"
                 >
                   Donate Now
