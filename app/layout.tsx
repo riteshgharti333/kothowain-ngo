@@ -3,6 +3,7 @@ import { Fraunces, Poppins, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import StoryCards from "./components/StoryCards";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -45,6 +46,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-body">
         <Navbar />
         {children}
+        <StoryCards />
         <Footer />
       </body>
     </html>

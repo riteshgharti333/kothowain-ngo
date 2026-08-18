@@ -32,6 +32,7 @@ import {
 import HeadingWithPaint from "../components/HeadingWithPaint";
 import PageBanner from "../components/PageBanner";
 import { useState } from "react";
+import Volunteer from "../components/Volunteer";
 
 /* ================================================================== */
 /* Volunteer-specific reusable components                             */
@@ -298,497 +299,174 @@ const VolunteerPage = () => {
         seed={800}
       />
 
-      {/* ============================================================ */}
-      {/* 2. VOLUNTEER IMPACT — stats with handshake metaphor          */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
-          <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                Why volunteer
-              </span>
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+      {/* 2. VOLUNTEER IMPACT — stats with handshake metaphor */}
+<section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
+  <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+    <div className="text-center mb-14">
+      <div className="flex items-center justify-center gap-3 mb-6">
+        <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+        <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
+          Why volunteer
+        </span>
+        <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+      </div>
+      <HeadingWithPaint
+        text="Your time, their future"
+        className="justify-center"
+      />
+      <p className="text-ink-soft text-sm mt-4 max-w-[400px] mx-auto">
+        The impact of volunteers who give their time and skills.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {volunteerStats.map((stat, index) => (
+        <motion.div
+          key={stat.label}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="group relative bg-white rounded-3xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-teal-950/5"
+        >
+          {/* Decorative corner circle */}
+          <div className="absolute -top-3 -right-3 w-16 h-16 rounded-full bg-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          
+          {/* Icon with rings */}
+          <div className="relative w-20 h-20 mx-auto mb-4">
+            {/* Ripple rings */}
+            <div className="absolute inset-0 rounded-full border-2 border-amber-500/20 group-hover:border-amber-500/40 transition-colors duration-300" />
+            <div className="absolute inset-2 rounded-full border border-teal-700/10 group-hover:border-teal-700/30 transition-colors duration-300" />
+            
+            {/* Icon */}
+            <div className={`absolute inset-0 ${stat.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+              <stat.icon className="w-8 h-8 text-cream-50" />
             </div>
-            <HeadingWithPaint
-              text="Your time, their future"
-              className="justify-center"
+            
+            {/* Pulse dot */}
+            <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-amber-400 animate-ping" />
+          </div>
+
+          {/* Value */}
+          <div className="font-display text-3xl font-bold text-teal-950 mb-1 group-hover:text-amber-600 transition-colors duration-300">
+            {stat.value}
+          </div>
+
+          {/* Label */}
+          <div className="text-ink-soft text-xs uppercase tracking-wide">
+            {stat.label}
+          </div>
+
+          {/* Bottom accent line */}
+          <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+      {/* 5. VOLUNTEER STORIES — testimonials */}
+<section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
+  <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+    <div className="text-center mb-14">
+      <div className="flex items-center justify-center gap-3 mb-6">
+        <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+        <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
+          They came, they served
+        </span>
+        <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+      </div>
+      <HeadingWithPaint
+        text="Volunteer stories"
+        className="justify-center"
+      />
+      <p className="text-ink-soft text-sm mt-4 max-w-[400px] mx-auto">
+        Real experiences from volunteers who made a difference.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {volunteerStories.map((volunteer, index) => (
+        <motion.div
+          key={volunteer.name}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.15 }}
+          className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+        >
+          {/* Image */}
+          <div className="relative h-64 overflow-hidden">
+            <Image
+              src={volunteer.image}
+              alt={volunteer.name}
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-700"
+              unoptimized
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-teal-950/80 via-transparent to-transparent" />
+            
+            {/* Role badge */}
+            <span className={`absolute top-4 left-4 ${volunteer.color} text-cream-50 text-xs font-bold px-3 py-1 rounded-full shadow-lg`}>
+              {volunteer.role}
+            </span>
+            
+            {/* Duration badge */}
+            <span className="absolute top-4 right-4 bg-cream-50/20 backdrop-blur-sm text-cream-50 text-xs font-bold px-3 py-1 rounded-full">
+              {volunteer.duration}
+            </span>
+            
+            {/* Name and country */}
+            <div className="absolute bottom-4 left-4 right-4">
+              <p className="text-cream-50 font-display font-semibold text-lg">
+                {volunteer.name}
+              </p>
+              <p className="text-cream-50/70 text-sm flex items-center gap-1">
+                <FiMapPin className="w-3 h-3" />
+                {volunteer.country}
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {volunteerStats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center group"
-              >
-                <div className={`w-16 h-16 rounded-2xl ${stat.color} mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <stat.icon className="w-7 h-7 text-cream-50" />
-                </div>
-                <div className="font-display text-3xl font-bold text-teal-950 mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-ink-soft text-xs uppercase tracking-wide">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Content */}
+          <div className="p-6 relative">
+            {/* Quote mark */}
+            <svg
+              viewBox="0 0 40 30"
+              className="w-8 h-6 mb-3 text-amber-500/40"
+              fill="currentColor"
+            >
+              <path d="M0,30 L0,20 Q0,5 15,0 L20,8 Q10,12 8,20 L15,20 L15,30 Z M25,30 L25,20 Q25,5 40,0 L45,8 Q35,12 33,20 L40,20 L40,30 Z" />
+            </svg>
+            
+            <p className="text-teal-950 text-sm italic leading-relaxed mb-4">
+              "{volunteer.quote}"
+            </p>
 
-      {/* ============================================================ */}
-      {/* 3. VOLUNTEER ROLES — interactive cards                       */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
-          <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                Open positions
+            {/* Divider */}
+            <div className="border-t border-teal-950/10 pt-4 flex items-center justify-between">
+              <span className="text-xs font-bold text-amber-500">
+                Kothowain Volunteer
               </span>
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-            </div>
-            <HeadingWithPaint
-              text="Find your role"
-              className="justify-center"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {volunteerRoles.map((role, index) => (
-              <motion.div
-                key={role.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => setActiveRole(index)}
-                className={`group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer ${
-                  activeRole === index ? "ring-4 ring-amber-500" : ""
-                }`}
-              >
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={role.image}
-                    alt={role.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                    unoptimized
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-950/60 to-transparent" />
-                  <span className="absolute top-4 left-4 bg-amber-500 text-teal-950 text-xs font-bold px-3 py-1 rounded-full">
-                    {role.category}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-10 h-10 rounded-xl bg-teal-950 flex items-center justify-center">
-                      <role.icon className="w-5 h-5 text-amber-400" />
-                    </span>
-                    <h3 className="font-display text-lg text-teal-950 font-semibold">
-                      {role.title}
-                    </h3>
-                  </div>
-
-                  <p className="text-ink-soft text-sm leading-relaxed mb-4">
-                    {role.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {role.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="text-xs font-bold text-teal-950 bg-cream-50 border border-teal-950/10 px-3 py-1 rounded-full"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center justify-between text-xs text-ink-soft mb-4">
-                    <span className="flex items-center gap-1">
-                      <FiClock className="w-3.5 h-3.5" /> {role.timeCommitment}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <FiMapPin className="w-3.5 h-3.5" /> {role.location}
-                    </span>
-                  </div>
-
-                  <div className="pt-4 border-t border-teal-950/10 flex items-center justify-between">
-                    <span className="text-xs font-bold text-amber-500">
-                      {role.impact}
-                    </span>
-                    <span className="text-teal-950 group-hover:translate-x-1 transition-transform duration-300">
-                      <FiArrowRight className="w-4 h-4" />
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 4. HOW IT WORKS — journey timeline                            */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-teal-950 relative overflow-hidden">
-        <div className="absolute -top-20 right-0 w-[400px] h-[400px] rounded-full bg-amber-500/5 pointer-events-none" />
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10 relative">
-          <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                The journey
-              </span>
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-            </div>
-            <h2 className="font-display font-semibold text-3xl lg:text-4xl text-cream-50">
-              How it works
-            </h2>
-          </div>
-
-          <div className="relative">
-            {/* Timeline */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-amber-500 to-teal-600 rounded-full" />
-
-            <div className="space-y-12">
-              {volunteerSteps.map((step, index) => (
-                <motion.div
-                  key={step.step}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`flex items-center gap-6 ${
-                    index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                  }`}
-                >
-                  {/* Content */}
-                  <div className="lg:w-1/2">
-                    <div className="bg-cream-50/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-cream-50/20 transition-colors duration-300">
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="font-mono text-xs text-amber-400 font-bold">
-                          {step.step}
-                        </span>
-                        <span className="text-xs text-cream-50/50">
-                          {step.duration}
-                        </span>
-                      </div>
-                      <h3 className="font-display text-lg text-cream-50 font-semibold mb-2">
-                        {step.title}
-                      </h3>
-                      <p className="text-cream-50/60 text-sm leading-relaxed">
-                        {step.desc}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Center icon */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-                    <motion.span
-                      whileHover={{ scale: 1.2, rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                      className="w-12 h-12 rounded-full bg-amber-500 border-4 border-teal-950 flex items-center justify-center shadow-lg"
-                    >
-                      <step.icon className="w-5 h-5 text-teal-950" />
-                    </motion.span>
-                  </div>
-
-                  {/* Empty space for alternating */}
-                  <div className="lg:w-1/2 hidden lg:block" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 5. VOLUNTEER STORIES — testimonials                           */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
-          <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                They came, they served
-              </span>
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-            </div>
-            <HeadingWithPaint
-              text="Volunteer stories"
-              className="justify-center"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {volunteerStories.map((volunteer, index) => (
-              <motion.div
-                key={volunteer.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={volunteer.image}
-                    alt={volunteer.name}
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-950/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <p className="text-cream-50 font-display font-semibold text-lg">
-                      {volunteer.name}
-                    </p>
-                    <p className="text-cream-50/70 text-sm">
-                      {volunteer.country}
-                    </p>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className={`${volunteer.color} text-cream-50 text-xs font-bold px-3 py-1 rounded-full`}>
-                      {volunteer.role}
-                    </span>
-                    <span className="text-xs text-ink-soft">
-                      {volunteer.duration}
-                    </span>
-                  </div>
-                  <p className="text-teal-950 text-sm italic leading-relaxed">
-                    "{volunteer.quote}"
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 6. VOLUNTEER APPLICATION FORM                                 */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[700px] mx-auto px-6 lg:px-10">
-          <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                Get started
-              </span>
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-            </div>
-            <HeadingWithPaint
-              text="Apply to volunteer"
-              className="justify-center"
-            />
-          </div>
-
-          {/* Form progress */}
-          <div className="flex items-center justify-center gap-4 mb-8">
-            {volunteerFormSteps.map((step, index) => (
-              <div key={step.label} className="flex items-center gap-4">
-                <div className="flex flex-col items-center">
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                      formStep >= index
-                        ? "bg-teal-950 text-amber-400"
-                        : "bg-white text-ink-soft"
-                    }`}
-                  >
-                    <step.icon className="w-5 h-5" />
-                  </motion.span>
-                  <span className="text-[10px] text-ink-soft mt-1">
-                    {step.label}
-                  </span>
-                </div>
-                {index < volunteerFormSteps.length - 1 && (
-                  <span className="w-8 h-px bg-teal-950/20" />
-                )}
+              {/* Stars */}
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <FiStar key={i} className="w-3.5 h-3.5 text-amber-500 fill-current" />
+                ))}
               </div>
-            ))}
-          </div>
-
-          {/* Form */}
-          <div className="bg-white rounded-3xl p-8 shadow-lg">
-            <AnimatePresence mode="wait">
-              {formStep === 0 && (
-                <motion.div
-                  key="step1"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className="space-y-4"
-                >
-                  <div>
-                    <label className="block text-sm font-semibold text-teal-950 mb-2">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Your name"
-                      className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:outline-none transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-teal-950 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="you@example.com"
-                      className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:outline-none transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-teal-950 mb-2">
-                      Country
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Your country"
-                      className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:outline-none transition-colors"
-                    />
-                  </div>
-                </motion.div>
-              )}
-
-              {formStep === 1 && (
-                <motion.div
-                  key="step2"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className="space-y-4"
-                >
-                  <div>
-                    <label className="block text-sm font-semibold text-teal-950 mb-2">
-                      Preferred Role
-                    </label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:outline-none transition-colors">
-                      <option>Select a role</option>
-                      {volunteerRoles.map((role) => (
-                        <option key={role.title}>{role.title}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-teal-950 mb-2">
-                      Relevant Skills
-                    </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Tell us about your skills and experience"
-                      className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:outline-none transition-colors"
-                    />
-                  </div>
-                </motion.div>
-              )}
-
-              {formStep === 2 && (
-                <motion.div
-                  key="step3"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className="space-y-4"
-                >
-                  <div>
-                    <label className="block text-sm font-semibold text-teal-950 mb-2">
-                      Available Start Date
-                    </label>
-                    <input
-                      type="date"
-                      className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:outline-none transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-teal-950 mb-2">
-                      Duration
-                    </label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:outline-none transition-colors">
-                      <option>2-4 weeks</option>
-                      <option>1-3 months</option>
-                      <option>3-6 months</option>
-                      <option>6+ months</option>
-                      <option>Remote / Flexible</option>
-                    </select>
-                  </div>
-                </motion.div>
-              )}
-
-              {formStep === 3 && (
-                <motion.div
-                  key="step4"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  className="text-center py-8"
-                >
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 200 }}
-                    className="w-20 h-20 rounded-full bg-teal-950 mx-auto mb-4 flex items-center justify-center"
-                  >
-                    <FiCheckCircle className="w-10 h-10 text-amber-400" />
-                  </motion.div>
-                  <h3 className="font-display text-2xl text-teal-950 font-semibold mb-2">
-                    Application Ready!
-                  </h3>
-                  <p className="text-ink-soft text-sm mb-6">
-                    Review your information and submit your application.
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Navigation buttons */}
-            <div className="flex justify-between mt-6 pt-6 border-t border-teal-950/10">
-              {formStep > 0 && (
-                <button
-                  onClick={() => setFormStep(formStep - 1)}
-                  className="px-6 py-2.5 rounded-full border-2 border-teal-950/20 text-teal-950 font-semibold text-sm hover:bg-teal-950 hover:text-cream-50 transition-all duration-300"
-                >
-                  Back
-                </button>
-              )}
-              {formStep < 3 ? (
-                <button
-                  onClick={() => setFormStep(formStep + 1)}
-                  className="ml-auto px-6 py-2.5 rounded-full bg-amber-500 text-teal-950 font-semibold text-sm hover:bg-teal-950 hover:text-amber-400 transition-all duration-300"
-                >
-                  Next Step
-                </button>
-              ) : (
-                <button className="ml-auto px-6 py-2.5 rounded-full bg-teal-950 text-cream-50 font-semibold text-sm hover:bg-amber-500 hover:text-teal-950 transition-all duration-300">
-                  Submit Application
-                </button>
-              )}
             </div>
           </div>
-        </div>
-      </section>
 
+          {/* Bottom accent line */}
+          <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+      <Volunteer />
       {/* ============================================================ */}
       {/* 7. FAQ SECTION                                                */}
       {/* ============================================================ */}

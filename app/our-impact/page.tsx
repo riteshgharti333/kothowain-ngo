@@ -32,6 +32,7 @@ import {
 import HeadingWithPaint from "../components/HeadingWithPaint";
 import PageBanner from "../components/PageBanner";
 import { useState } from "react";
+import Testimonial from "../components/Testimonial";
 
 /* ================================================================== */
 /* Impact-specific reusable components                                 */
@@ -170,6 +171,51 @@ const ImpactPage = () => {
     { name: "Jurachari", region: "Rangamati", families: "300", programs: 1, color: "bg-teal-600" },
   ];
 
+  const communityVoices = [
+  {
+    name: "Priya Tripura",
+    location: "Ruma, Bandarban",
+    program: "Education",
+    quote: "I'm the first girl in my village to finish secondary school. Now I teach three younger students every evening.",
+    image: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=100&h=100&fit=crop&q=80",
+  },
+  {
+    name: "Lalmohon Chakma",
+    location: "Thanchi, Bandarban",
+    program: "Clean Water",
+    quote: "The water comes to us now. We don't go to it. My daughter won't have to spend her life carrying buckets.",
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=100&h=100&fit=crop&q=80",
+  },
+  {
+    name: "Anjali Chakma",
+    location: "Belaichori, Rangamati",
+    program: "Medical Support",
+    quote: "I'm not a doctor. I'm the person who knows when you need one. That's the difference.",
+    image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=100&h=100&fit=crop&q=80",
+  },
+  {
+    name: "Ushai Marma",
+    location: "Ruma, Bandarban",
+    program: "Food & Nutrition",
+    quote: "Nobody eats better than anyone else at my table. That's the whole recipe.",
+    image: "https://images.unsplash.com/photo-1547592180-85f173990554?w=100&h=100&fit=crop&q=80",
+  },
+  {
+    name: "Sanjoy Tripura",
+    location: "Alikadam, Bandarban",
+    program: "Education",
+    quote: "The field taught me patience. The books taught me that patience has a purpose.",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=100&h=100&fit=crop&q=80",
+  },
+  {
+    name: "Moyna Tripura",
+    location: "Jurachari, Rangamati",
+    program: "Clean Water",
+    quote: "I spent forty years carrying water. Now the water carries me.",
+    image: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?w=100&h=100&fit=crop&q=80",
+  },
+];
+
   const stories = [
     {
       name: "Priya Tripura",
@@ -210,7 +256,7 @@ const ImpactPage = () => {
         "No village health worker",
         "Seasonal hunger",
       ],
-      color: "bg-teal-950",
+      color: "bg-teal-700",
     },
     {
       label: "2024",
@@ -260,55 +306,73 @@ const ImpactPage = () => {
         seed={600}
       />
 
-      {/* ============================================================ */}
-      {/* 2. IMPACT AT A GLANCE — ripple rings                          */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
-          <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                The big picture
-              </span>
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+      {/* 2. IMPACT AT A GLANCE — ripple rings */}
+<section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
+  <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+    <div className="text-center mb-14">
+      <div className="flex items-center justify-center gap-3 mb-6">
+        <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+        <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
+          The big picture
+        </span>
+        <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+      </div>
+      <HeadingWithPaint
+        text="Impact at a glance"
+        className="justify-center"
+      />
+      <p className="text-ink-soft text-sm mt-4 max-w-[400px] mx-auto">
+        The ripple effect of your support, measured in lives changed.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {impactStats.map((stat, index) => (
+        <motion.div
+          key={stat.label}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="group relative bg-white rounded-3xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-teal-950/5"
+        >
+          {/* Decorative corner circle */}
+          <div className="absolute -top-3 -right-3 w-16 h-16 rounded-full bg-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          
+          {/* Icon with ring */}
+          <div className="relative w-20 h-20 mx-auto mb-4">
+            {/* Ripple rings */}
+            <div className="absolute inset-0 rounded-full border-2 border-amber-500/20 group-hover:border-amber-500/40 transition-colors duration-300" />
+            <div className="absolute inset-2 rounded-full border border-teal-700/10 group-hover:border-teal-700/30 transition-colors duration-300" />
+            
+            {/* Icon */}
+            <div className={`absolute inset-0 ${stat.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+              <stat.icon className="w-8 h-8 text-cream-50" />
             </div>
-            <HeadingWithPaint
-              text="Impact at a glance"
-              className="justify-center"
-            />
+            
+            {/* Trend badge */}
+            <span className="absolute -bottom-1 -right-1 bg-white rounded-full px-1.5 py-0.5 shadow-md text-[10px] font-bold text-amber-600 border border-amber-500/20">
+              {stat.trend}
+            </span>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {impactStats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative text-center group"
-              >
-                <div className="mb-4 flex justify-center">
-                  <ImpactRings active={index === 0} />
-                </div>
-                <div className={`w-16 h-16 rounded-2xl ${stat.color} mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <stat.icon className="w-7 h-7 text-cream-50" />
-                </div>
-                <div className="font-display text-3xl font-bold text-teal-950 mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-ink-soft text-xs uppercase tracking-wide mb-2">
-                  {stat.label}
-                </div>
-                <span className="inline-block bg-amber-50 text-amber-600 text-xs font-bold px-2 py-1 rounded-full">
-                  {stat.trend}
-                </span>
-              </motion.div>
-            ))}
+          {/* Value */}
+          <div className="font-display text-3xl font-bold text-teal-950 mb-1 group-hover:text-amber-600 transition-colors duration-300">
+            {stat.value}
           </div>
-        </div>
-      </section>
+
+          {/* Label */}
+          <div className="text-ink-soft text-xs uppercase tracking-wide">
+            {stat.label}
+          </div>
+
+          {/* Bottom accent line */}
+          <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ============================================================ */}
       {/* 3. IMPACT BY PROGRAM — interactive tabs                       */}
@@ -564,178 +628,156 @@ const ImpactPage = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {beforeAfter.map((phase, index) => (
-              <motion.div
-                key={phase.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className={`${phase.color} rounded-3xl p-8 relative overflow-hidden`}
-              >
-                <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-white/10" />
-                <span className="inline-block bg-cream-50/20 text-cream-50 text-xs font-bold px-3 py-1 rounded-full mb-4">
-                  {phase.label}
-                </span>
-                <h3 className="font-display text-2xl text-cream-50 font-semibold mb-4">
-                  {phase.title}
-                </h3>
-                <ul className="space-y-3">
-                  {phase.points.map((point, i) => (
-                    <motion.li
-                      key={point}
-                      initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
-                      className="flex items-center gap-2 text-cream-50/90 text-sm"
-                    >
-                      {index === 0 ? (
-                        <FiTrendingUp className="w-4 h-4 text-cream-50/50" />
-                      ) : (
-                        <FiCheckCircle className="w-4 h-4 text-amber-400" />
-                      )}
-                      {point}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
+         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  {beforeAfter.map((phase, index) => (
+    <motion.div
+      key={phase.title}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.2 }}
+      className={`${phase.color} rounded-3xl p-8 relative overflow-hidden group cursor-pointer hover:-translate-y-2 hover:shadow-2xl transition-all duration-500`}
+    >
+      {/* Decorative circle */}
+      <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-white/10 group-hover:scale-150 group-hover:bg-white/20 transition-all duration-500" />
+      
+      {/* Bottom accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cream-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      
+     
+      
+      {/* Label */}
+      <span className="inline-block bg-cream-50/20 text-cream-50 text-xs font-bold px-3 py-1 rounded-full mb-4 group-hover:bg-cream-50/30 transition-colors duration-300">
+        {phase.label}
+      </span>
+      
+      {/* Title */}
+      <h3 className="font-display text-2xl text-cream-50 font-semibold mb-4 group-hover:scale-105 group-hover:translate-x-2 transition-transform duration-300">
+        {phase.title}
+      </h3>
+      
+      {/* Points */}
+      <ul className="space-y-3">
+        {phase.points.map((point, i) => (
+          <motion.li
+            key={point}
+            initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
+            className="flex items-center gap-2 text-cream-50/90 text-sm group-hover:text-cream-50 transition-colors duration-300 hover:translate-x-2 cursor-default"
+          >
+            {index === 0 ? (
+              <FiTrendingUp className="w-4 h-4 text-cream-50/50 group-hover:text-cream-50 flex-shrink-0 transition-colors duration-300" />
+            ) : (
+              <FiCheckCircle className="w-4 h-4 text-amber-400 group-hover:scale-110 flex-shrink-0 transition-transform duration-300" />
+            )}
+            {point}
+          </motion.li>
+        ))}
+      </ul>
+    </motion.div>
+  ))}
+</div>
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* 7. OUR PROGRESS — milestone timeline                          */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10">
-          <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                The journey
-              </span>
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+
+
+{/* 7. COMMUNITY VOICES WALL — testimonial masonry */}
+<section className="py-[90px] lg:py-[120px] bg-paper">
+  <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+    <div className="text-center mb-14">
+      <div className="flex items-center justify-center gap-3 mb-6">
+        <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+        <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
+          Voices from the hills
+        </span>
+        <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+      </div>
+      <HeadingWithPaint
+        text="Impact in their words"
+        className="justify-center"
+      />
+      <p className="text-ink-soft text-sm mt-4 max-w-[400px] mx-auto">
+        Real voices from the communities we serve.
+      </p>
+    </div>
+
+    {/* Masonry-style voices wall */}
+    <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
+      {communityVoices.map((voice, index) => (
+        <motion.div
+          key={voice.name}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className={`break-inside-avoid relative rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer ${
+            index % 3 === 0 
+              ? "bg-teal-950 text-cream-50" 
+              : index % 3 === 1 
+              ? "bg-amber-500 text-teal-950" 
+              : "bg-white text-teal-950"
+          }`}
+          style={{ rotate: index % 2 === 0 ? "0.5deg" : "-0.5deg" }}
+        >
+          {/* Quote mark */}
+          <svg
+            viewBox="0 0 40 30"
+            className={`w-8 h-6 mb-4 ${
+              index % 3 === 0 
+                ? "text-amber-400" 
+                : index % 3 === 1 
+                ? "text-teal-950/40" 
+                : "text-amber-500/40"
+            }`}
+            fill="currentColor"
+          >
+            <path d="M0,30 L0,20 Q0,5 15,0 L20,8 Q10,12 8,20 L15,20 L15,30 Z M25,30 L25,20 Q25,5 40,0 L45,8 Q35,12 33,20 L40,20 L40,30 Z" />
+          </svg>
+
+          {/* Quote text */}
+          <p className={`text-sm italic leading-relaxed mb-4 ${
+            index % 3 === 0 ? "text-cream-50/90" : "text-teal-950/90"
+          }`}>
+            "{voice.quote}"
+          </p>
+
+          {/* Divider */}
+          <div className={`border-t pt-4 flex items-center gap-3 ${
+            index % 3 === 0 ? "border-cream-50/20" : "border-teal-950/20"
+          }`}>
+            <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+              <Image
+                src={voice.image}
+                alt={voice.name}
+                fill
+                className="object-cover"
+                unoptimized
+              />
             </div>
-            <HeadingWithPaint
-              text="Our progress"
-              className="justify-center"
-            />
-          </div>
-
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-6 lg:left-1/2 transform lg:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-amber-500 to-teal-700 rounded-full" />
-
-            <div className="space-y-10">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={milestone.year}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`flex items-center gap-6 ${
-                    index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                  }`}
-                >
-                  {/* Year marker */}
-                  <div className="hidden lg:flex w-1/2 justify-end">
-                    <span className={`font-display text-2xl font-bold ${
-                      milestone.achieved ? "text-teal-950" : "text-amber-500"
-                    }`}>
-                      {milestone.year}
-                    </span>
-                  </div>
-
-                  {/* Center dot */}
-                  <div className="absolute left-6 lg:left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-                    <span className={`w-5 h-5 rounded-full border-4 border-cream-50 shadow-lg ${
-                      milestone.achieved ? "bg-teal-600" : "bg-amber-500"
-                    }`} />
-                  </div>
-
-                  {/* Content */}
-                  <div className="lg:w-1/2 pl-14 lg:pl-0">
-                    <div className={`bg-white rounded-2xl p-5 shadow-lg ${
-                      milestone.achieved ? "border-l-4 border-teal-600" : "border-l-4 border-amber-500"
-                    }`}>
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="lg:hidden font-display text-lg font-bold text-teal-950">
-                          {milestone.year}
-                        </span>
-                        {milestone.achieved ? (
-                          <FiCheckCircle className="w-4 h-4 text-teal-600" />
-                        ) : (
-                          <FiTarget className="w-4 h-4 text-amber-500" />
-                        )}
-                      </div>
-                      <p className="text-sm text-teal-950 font-semibold">
-                        {milestone.milestone}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+            <div className="flex-1">
+              <p className={`font-display font-semibold text-sm ${
+                index % 3 === 0 ? "text-cream-50" : "text-teal-950"
+              }`}>
+                {voice.name}
+              </p>
+              <p className={`text-xs ${
+                index % 3 === 0 ? "text-cream-50/60" : "text-teal-950/60"
+              }`}>
+                {voice.location} • {voice.program}
+              </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ============================================================ */}
-      {/* 8. TRANSPARENCY & REPORTS — document cards                    */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10">
-          <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                Open books
-              </span>
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-            </div>
-            <HeadingWithPaint
-              text="Transparency & reports"
-              className="justify-center"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {reports.map((report, index) => (
-              <motion.a
-                key={report.title}
-                href="#"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="flex items-start gap-4">
-                  <span className="w-12 h-12 rounded-xl bg-teal-950 flex items-center justify-center flex-shrink-0">
-                    <FiBarChart2 className="w-5 h-5 text-amber-400" />
-                  </span>
-                  <div className="flex-1">
-                    <h3 className="font-display text-base text-teal-950 font-semibold mb-1 group-hover:text-amber-600 transition-colors">
-                      {report.title}
-                    </h3>
-                    <div className="flex items-center gap-3 text-xs text-ink-soft">
-                      <span className="bg-cream-50 px-2 py-1 rounded">{report.type}</span>
-                      <span>{report.size}</span>
-                      <span>{report.year}</span>
-                    </div>
-                  </div>
-                  <FiDownload className="w-5 h-5 text-teal-950 group-hover:text-amber-500 transition-colors" />
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
-
+          {/* Hover effect */}
+          <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
       {/* ============================================================ */}
       {/* 9. DONATE CTA                                                */}
       {/* ============================================================ */}

@@ -363,6 +363,33 @@ const TeamPage = () => {
     { id: "support", label: "Support Team", icon: FiHeart, count: supportTeam.length },
   ];
 
+  const teamStats = [
+  { 
+    label: "Core Team Members", 
+    value: "24+", 
+    icon: FiUsers, 
+    color: "bg-amber-500" 
+  },
+  { 
+    label: "From Hill Tracts", 
+    value: "80%", 
+    icon: FiMapPin, 
+    color: "bg-teal-700" 
+  },
+  { 
+    label: "Advisors & Mentors", 
+    value: "12+", 
+    icon: FiAward, 
+    color: "bg-amber-400" 
+  },
+  { 
+    label: "Volunteers Worldwide", 
+    value: "240+", 
+    icon: FiGlobe, 
+    color: "bg-teal-950" 
+  },
+];
+
   return (
     <main className="">
       {/* ============================================================ */}
@@ -379,63 +406,92 @@ const TeamPage = () => {
         seed={1000}
       />
 
-      {/* ============================================================ */}
-      {/* 2. TEAM INTRO — culture & values                              */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-                <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                  Who we are
-                </span>
-              </div>
-              <HeadingWithPaint
-                text="More than just colleagues"
-                className="text-left mb-6"
-              />
-              <p className="text-ink-soft leading-[1.85] text-base mb-4">
-                Our team is a family — connected by shared values, diverse
-                experiences, and a deep commitment to the communities we
-                serve. From Dhaka to Bandarban, we work together across
-                distances and disciplines.
-              </p>
-              <p className="text-ink-soft leading-[1.85] text-base">
-                We believe in local leadership, cultural respect, and the
-                power of community wisdom. That's why 80% of our team comes
-                from the Chittagong Hill Tracts themselves.
-              </p>
+     {/* 2. TEAM INTRO — culture & values */}
+<section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
+  <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+      {/* Text */}
+      <div>
+        <div className="flex items-center gap-3 mb-6">
+          <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+          <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
+            Who we are
+          </span>
+        </div>
+        <HeadingWithPaint
+          text="More than just colleagues"
+          className="text-left mb-6"
+        />
+        <p className="text-ink-soft leading-[1.85] text-base mb-4">
+          Our team is a family — connected by shared values, diverse
+          experiences, and a deep commitment to the communities we
+          serve. From Dhaka to Bandarban, we work together across
+          distances and disciplines.
+        </p>
+        <p className="text-ink-soft leading-[1.85] text-base mb-8">
+          We believe in local leadership, cultural respect, and the
+          power of community wisdom. That's why 80% of our team comes
+          from the Chittagong Hill Tracts themselves.
+        </p>
+        
+        {/* Tags */}
+        <div className="flex flex-wrap gap-3">
+          {["Local Leadership", "Cultural Respect", "Community Wisdom"].map((tag) => (
+            <span
+              key={tag}
+              className="group/tag relative text-xs font-bold text-teal-950 bg-white border border-teal-950/10 px-4 py-2 rounded-full cursor-pointer overflow-hidden transition-all duration-300 hover:bg-teal-950 hover:text-amber-400 hover:border-teal-950 hover:scale-105"
+            >
+              <span className="inline-flex items-center gap-1.5">
+                {tag}
+              </span>
+            </span>
+          ))}
+        </div>
+      </div>
+      
+      {/* Stats Cards with better design */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="grid grid-cols-2 gap-4"
+      >
+        {teamStats.map((stat, index) => (
+          <motion.div
+            key={stat.label}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="group relative bg-white rounded-3xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-teal-950/5"
+          >
+            {/* Decorative corner circle */}
+            <div className="absolute -top-3 -right-3 w-14 h-14 rounded-full bg-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            
+            {/* Icon */}
+            <div className={`w-12 h-12 rounded-2xl ${stat.color} mx-auto mb-3 flex items-center justify-center shadow-md group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+              <stat.icon className="w-6 h-6 text-cream-50" />
             </div>
             
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              <div className="bg-white rounded-3xl p-6 text-center shadow-lg">
-                <div className="text-3xl font-display font-bold text-teal-950 mb-2">24+</div>
-                <div className="text-xs text-ink-soft uppercase tracking-wide">Core Team Members</div>
-              </div>
-              <div className="bg-white rounded-3xl p-6 text-center shadow-lg">
-                <div className="text-3xl font-display font-bold text-amber-500 mb-2">80%</div>
-                <div className="text-xs text-ink-soft uppercase tracking-wide">From Hill Tracts</div>
-              </div>
-              <div className="bg-white rounded-3xl p-6 text-center shadow-lg">
-                <div className="text-3xl font-display font-bold text-teal-700 mb-2">12+</div>
-                <div className="text-xs text-ink-soft uppercase tracking-wide">Advisors & Mentors</div>
-              </div>
-              <div className="bg-white rounded-3xl p-6 text-center shadow-lg">
-                <div className="text-3xl font-display font-bold text-amber-400 mb-2">240+</div>
-                <div className="text-xs text-ink-soft uppercase tracking-wide">Volunteers Worldwide</div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+            {/* Value */}
+            <div className="font-display text-3xl font-bold text-teal-950 mb-1 group-hover:text-amber-600 transition-colors duration-300">
+              {stat.value}
+            </div>
+            
+            {/* Label */}
+            <div className="text-ink-soft text-xs uppercase tracking-wide">
+              {stat.label}
+            </div>
+            
+            {/* Bottom accent line */}
+            <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+  </div>
+</section>
 
       {/* ============================================================ */}
       {/* 3. TEAM NAVIGATION TABS                                       */}

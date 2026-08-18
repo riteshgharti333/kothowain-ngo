@@ -339,51 +339,81 @@ const DonatePage = () => {
         seed={1200}
       />
 
-      {/* ============================================================ */}
-      {/* 2. IMPACT STATS — trust indicators                           */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 ">
-            {impactStats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center group"
-              >
-                <div
-                  className={`w-16 h-16 rounded-2xl ${stat.color} mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <stat.icon className="w-7 h-7 text-cream-50" />
-                </div>
-                <div className="font-display text-3xl font-bold text-teal-950 mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-ink-soft text-xs uppercase tracking-wide">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+     {/* 2. IMPACT STATS — trust indicators */}
+<section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
+  <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {impactStats.map((stat, index) => (
+        <motion.div
+          key={stat.label}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="group relative bg-white rounded-3xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-teal-950/5"
+        >
+          {/* Decorative corner circle */}
+          <div className="absolute -top-3 -right-3 w-16 h-16 rounded-full bg-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          
+          {/* Icon with rings */}
+          <div className="relative w-20 h-20 mx-auto mb-4">
+            {/* Ripple rings */}
+            <div className="absolute inset-0 rounded-full border-2 border-amber-500/20 group-hover:border-amber-500/40 transition-colors duration-300" />
+            <div className="absolute inset-2 rounded-full border border-teal-700/10 group-hover:border-teal-700/30 transition-colors duration-300" />
+            
+            {/* Icon */}
+            <div className={`absolute inset-0 ${stat.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+              <stat.icon className="w-8 h-8 text-cream-50" />
+            </div>
           </div>
 
-          {/* Trust badges */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap gap-3 justify-center mt-10"
-          >
-            <TrustBadge icon={FiShield} text="Secure Payment" />
-            <TrustBadge icon={FiLock} text="256-bit SSL Encryption" />
-            <TrustBadge icon={FiAward} text="Registered NGO" />
-            <TrustBadge icon={FiCheckCircle} text="Transparent Reporting" />
-          </motion.div>
-        </div>
-      </section>
+          {/* Value */}
+          <div className="font-display text-3xl font-bold text-teal-950 mb-1 group-hover:text-amber-600 transition-colors duration-300">
+            {stat.value}
+          </div>
+
+          {/* Label */}
+          <div className="text-ink-soft text-xs uppercase tracking-wide">
+            {stat.label}
+          </div>
+
+          {/* Bottom accent line */}
+          <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </motion.div>
+      ))}
+    </div>
+
+    {/* Trust badges */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.4 }}
+      className="flex flex-wrap gap-3 justify-center mt-12"
+    >
+      {[
+        { icon: FiShield, text: "Secure Payment" },
+        { icon: FiLock, text: "256-bit SSL Encryption" },
+        { icon: FiAward, text: "Registered NGO" },
+        { icon: FiCheckCircle, text: "Transparent Reporting" },
+      ].map((badge, index) => (
+        <motion.div
+          key={badge.text}
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
+          className="group/badge flex items-center gap-2 bg-white border border-teal-950/10 rounded-full px-4 py-2 transition-all duration-300 hover:bg-teal-950 hover:border-teal-950 hover:scale-105 cursor-pointer"
+        >
+          <badge.icon className="w-4 h-4 text-teal-700 group-hover/badge:text-amber-400 transition-colors" />
+          <span className="text-xs font-semibold text-teal-950 group-hover/badge:text-cream-50 transition-colors">
+            {badge.text}
+          </span>
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</section>
 
       {/* ============================================================ */}
       {/* 3. DONATION FORM + IMPACT AREAS                              */}
@@ -521,7 +551,7 @@ const DonatePage = () => {
 
 
 {/* 5. DONOR TESTIMONIALS */}
-<section className="py-[90px] lg:py-[120px] bg-paper">
+<section className="py-[90px] lg:py-[120px] bg-cream-100 relative overflow-hidden">
   <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
     <div className="text-center mb-14">
       <div className="flex items-center justify-center gap-3 mb-6">
@@ -537,14 +567,52 @@ const DonatePage = () => {
       />
     </div>
 
-    {/* Better testimonial cards */}
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {testimonials.map((testimonial, index) => (
-        <TestimonialCard
+        <motion.div
           key={testimonial.name}
-          testimonial={testimonial}
-          index={index}
-        />
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="relative"
+        >
+          {/* Card */}
+          <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+            {/* Stars */}
+            <div className="flex gap-1 mb-4">
+              {[...Array(5)].map((_, i) => (
+                <FiStar key={i} className="w-4 h-4 text-amber-500 fill-current" />
+              ))}
+            </div>
+            
+            {/* Quote */}
+            <p className="text-teal-950 text-base italic leading-relaxed mb-6 flex-1">
+              "{testimonial.quote}"
+            </p>
+            
+            {/* Person info */}
+            <div className="flex items-center gap-4 pt-5 border-t border-teal-950/10">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                <Image
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+              </div>
+              <div>
+                <h3 className="font-display text-base text-teal-950 font-semibold">
+                  {testimonial.name}
+                </h3>
+                <p className="text-amber-500 text-xs font-bold">
+                  {testimonial.role}
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       ))}
     </div>
   </div>
@@ -579,36 +647,7 @@ const DonatePage = () => {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* 7. DOWNLOAD REPORT CTA                                        */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[600px] mx-auto px-6 lg:px-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-white rounded-3xl p-8 lg:p-10 shadow-xl"
-          >
-            <FiDownload className="w-12 h-12 text-amber-500 mx-auto mb-4" />
-            <h3 className="font-display text-2xl text-teal-950 font-semibold mb-3">
-              Want to see our financials?
-            </h3>
-            <p className="text-ink-soft text-sm mb-6">
-              Download our latest annual report and audited financial
-              statements.
-            </p>
-            <Link
-              href="#"
-              className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-teal-950 text-cream-50 font-semibold text-sm transition-all duration-300 hover:bg-amber-500 hover:text-teal-950 hover:-translate-y-0.5"
-            >
-              Download Annual Report
-              <FiDownload className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+   
 
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {

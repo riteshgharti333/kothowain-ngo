@@ -18,6 +18,7 @@ import {
   FiChevronDown,
   FiPaperclip,
   FiCheckCircle,
+  FiHome,
 } from "react-icons/fi";
 import HeadingWithPaint from "../../components/HeadingWithPaint";
 import PageBanner from "../../components/PageBanner";
@@ -121,34 +122,6 @@ const EducationPage = () => {
     },
   ];
 
-  const routeStops = [
-    {
-      stop: "01",
-      title: "Outreach",
-      desc: "We walk the village, meet families, map who's out of school.",
-    },
-    {
-      stop: "02",
-      title: "Enrollment",
-      desc: "Children and parents welcomed in their own language.",
-    },
-    {
-      stop: "03",
-      title: "Learning Center",
-      desc: "Foundational lessons begin close to home.",
-    },
-    {
-      stop: "04",
-      title: "Primary School",
-      desc: "Transition in, with materials and follow-up visits.",
-    },
-    {
-      stop: "05",
-      title: "Scholarship",
-      desc: "Top performers tracked into secondary school and beyond.",
-    },
-  ];
-
   const reportCard = [
     { subject: "Enrollment Growth", grade: "A+", score: 92 },
     { subject: "Literacy Improvement", grade: "A", score: 85 },
@@ -173,7 +146,7 @@ const EducationPage = () => {
       {/* 1. HERO                                                        */}
       {/* ============================================================ */}
       <PageBanner
-        image="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1600&h=900&fit=crop&q=80"
+        image="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         breadcrumb="Education"
         headingLine1="Every Child"
         headingHighlight="Learns."
@@ -368,69 +341,6 @@ const EducationPage = () => {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 4. THE ROUTE TO SCHOOL — ticket-stub horizontal path           */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-teal-950 relative overflow-hidden">
-        <div className="absolute top-10 right-20 w-40 h-40 rounded-full bg-amber-500/5 pointer-events-none" />
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
-          <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                The route to school
-              </span>
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-            </div>
-            <h2 className="font-display font-semibold text-3xl lg:text-4xl text-cream-50">
-              Five stops, one journey
-            </h2>
-          </div>
-
-          <div className="flex gap-5 overflow-x-auto pb-6 px-1 snap-x snap-mandatory scrollbar-hide">
-            {routeStops.map((stop, index) => (
-              <motion.div
-                key={stop.stop}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative flex-shrink-0 w-[240px] snap-start"
-              >
-                <div
-                  className="relative bg-cream-50 rounded-2xl p-6 pt-5"
-                  style={{
-                    WebkitMaskImage:
-                      "radial-gradient(circle 7px at 0 50%, transparent 7px, black 7.5px), radial-gradient(circle 7px at 100% 50%, transparent 7px, black 7.5px)",
-                    WebkitMaskComposite: "source-in",
-                    maskComposite: "intersect",
-                  }}
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="font-mono text-[10px] tracking-widest text-amber-600 font-bold">
-                      STOP {stop.stop}
-                    </span>
-                    <span className="w-6 h-6 rounded-full bg-teal-950 text-amber-400 text-[10px] font-bold flex items-center justify-center">
-                      {index + 1}
-                    </span>
-                  </div>
-                  <div className="border-t border-dashed border-teal-950/20 mb-4" />
-                  <h3 className="font-display text-base text-teal-950 font-semibold mb-1.5">
-                    {stop.title}
-                  </h3>
-                  <p className="text-ink-soft text-xs leading-relaxed">
-                    {stop.desc}
-                  </p>
-                </div>
-                {index < routeStops.length - 1 && (
-                  <span className="hidden lg:block absolute top-1/2 -right-5 w-5 border-t-2 border-dashed border-amber-500/40" />
-                )}
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>

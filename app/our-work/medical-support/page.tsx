@@ -67,7 +67,13 @@ const MedicalCross = ({ size = "lg" }: { size?: "sm" | "lg" }) => (
 );
 
 // Vital signs monitor
-const VitalSignsMonitor = ({ value = 80, label = "Health" }: { value?: number; label?: string }) => (
+const VitalSignsMonitor = ({
+  value = 80,
+  label = "Health",
+}: {
+  value?: number;
+  label?: string;
+}) => (
   <div className="bg-teal-950 rounded-2xl p-4 w-full">
     <div className="flex items-center justify-between mb-2">
       <span className="text-cream-50/60 text-[10px] font-mono uppercase tracking-wider">
@@ -165,10 +171,31 @@ const MedicalSupportPage = () => {
   ];
 
   const healthStats = [
-    { label: "Health Camps Held", value: "120+", icon: FiCalendar, color: "bg-amber-500" },
-    { label: "Patients Treated", value: "8,500+", icon: FiUsers, color: "bg-teal-700" },
-    { label: "Maternal Mortality Drop", value: "45%", icon: FiHeart, color: "bg-amber-400" },
-    { label: "Villages Reached", value: "86", icon: FiMapPin, color: "bg-teal-950" },
+    {
+      label: "Health Camps Held",
+      value: "120+",
+      icon: FiCalendar,
+      color: "bg-amber-500",
+    },
+    {
+      label: "Patients Treated",
+      value: "8,500+",
+      icon: FiUsers,
+      color: "bg-teal-700",
+    },
+    {
+      label: "Maternal Mortality Drop",
+      value: "45%",
+      icon: FiHeart,
+      color: "bg-amber-500",
+    },
+    {
+      label: "Villages Reached",
+      value: "86",
+      icon: FiMapPin,
+      color: "bg-teal-700",
+      
+    },
   ];
 
   // NEW: Prescription card data
@@ -265,7 +292,7 @@ const MedicalSupportPage = () => {
       {/* 1. HERO                                                        */}
       {/* ============================================================ */}
       <PageBanner
-        image="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&h=900&fit=crop&q=80"
+        image="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         breadcrumb="Medical Support"
         headingLine1="Every Life"
         headingHighlight="Counts."
@@ -295,9 +322,9 @@ const MedicalSupportPage = () => {
               />
               <p className="text-ink-soft leading-[1.85] text-base mb-4">
                 In the Chittagong Hill Tracts, the nearest hospital is often a
-                day's journey away. Kothowain's health program works to
-                shorten that journey — starting with community health workers
-                who can detect illness before it becomes emergency.
+                day's journey away. Kothowain's health program works to shorten
+                that journey — starting with community health workers who can
+                detect illness before it becomes emergency.
               </p>
               <p className="text-ink-soft leading-[1.85] text-base mb-8">
                 What begins as a home visit becomes a village clinic, then a
@@ -305,16 +332,22 @@ const MedicalSupportPage = () => {
                 the road doesn't.
               </p>
               <div className="flex flex-wrap gap-3">
-                {["Mobile Health Camps", "Mother & Child", "Emergency Fund", "Health Workers"].map(
-                  (tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs font-bold text-teal-950 bg-white border border-teal-950/10 px-4 py-2 rounded-full"
-                    >
+                {[
+                  "Mobile Health Camps",
+                  "Mother & Child",
+                  "Emergency Fund",
+                  "Health Workers",
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    className="group/tag relative text-xs font-bold text-teal-950 bg-white border border-teal-950/10 px-4 py-2 rounded-full cursor-pointer overflow-hidden transition-all duration-300 hover:bg-teal-950 hover:text-amber-400 hover:border-teal-950 hover:scale-105"
+                  >
+                    {/* Hover arrow */}
+                    <span className="inline-flex items-center gap-1.5">
                       {tag}
                     </span>
-                  )
-                )}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -329,7 +362,7 @@ const MedicalSupportPage = () => {
               <div className="bg-teal-950 rounded-3xl p-8 relative overflow-hidden">
                 <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-amber-500/10" />
                 <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-teal-700/20" />
-                
+
                 {/* EKG line */}
                 <div className="relative mb-8">
                   <svg viewBox="0 0 400 100" className="w-full h-24">
@@ -359,7 +392,9 @@ const MedicalSupportPage = () => {
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       className="flex items-center gap-4"
                     >
-                      <span className={`w-10 h-10 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center flex-shrink-0`}>
+                      <span
+                        className={`w-10 h-10 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center flex-shrink-0`}
+                      >
                         <step.icon className="w-4 h-4 text-cream-50" />
                       </span>
                       <div>
@@ -371,9 +406,7 @@ const MedicalSupportPage = () => {
                             {step.title}
                           </span>
                         </div>
-                        <p className="text-cream-50/60 text-xs">
-                          {step.desc}
-                        </p>
+                        <p className="text-cream-50/60 text-xs">{step.desc}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -431,9 +464,6 @@ const MedicalSupportPage = () => {
                 <span className="absolute top-5 left-5 bg-amber-500 text-teal-950 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
                   {service.tag}
                 </span>
-                <span className="absolute top-5 right-5 w-11 h-11 rounded-full bg-cream-50/15 backdrop-blur-sm flex items-center justify-center">
-                  <service.icon className="w-5 h-5 text-cream-50" />
-                </span>
 
                 <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-7">
                   <h3 className="font-display text-xl lg:text-2xl text-cream-50 font-semibold mb-2">
@@ -453,129 +483,12 @@ const MedicalSupportPage = () => {
       </section>
 
       {/* ============================================================ */}
-      {/* NEW SECTION 1: PRESCRIPTION PAD — treatment programs          */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10">
-          <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                Prescription pad
-              </span>
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-            </div>
-            <HeadingWithPaint
-              text="What we prescribe"
-              className="justify-center"
-            />
-            <p className="text-ink-soft text-sm mt-4 max-w-[400px] mx-auto">
-              Our treatment programs, written out like a doctor's orders.
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {prescriptions.map((rx, index) => {
-              const isExpanded = expandedRx === index;
-              return (
-                <motion.div
-                  key={rx.rx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden"
-                >
-                  <button
-                    onClick={() => setExpandedRx(isExpanded ? null : index)}
-                    className="w-full flex items-center gap-5 px-6 py-5 text-left hover:bg-amber-50/40 transition-colors duration-300"
-                  >
-                    <span className="w-12 h-12 rounded-xl bg-teal-950 flex items-center justify-center flex-shrink-0">
-                      <rx.icon className="w-5 h-5 text-amber-400" />
-                    </span>
-                    
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-3 mb-1">
-                        <span className="font-mono text-[10px] tracking-wider text-amber-500 font-bold">
-                          {rx.rx}
-                        </span>
-                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
-                          rx.status === "Active" ? "bg-teal-50 text-teal-700" : "bg-amber-50 text-amber-600"
-                        }`}>
-                          {rx.status}
-                        </span>
-                      </div>
-                      <h3 className="font-display text-base text-teal-950 font-semibold">
-                        {rx.patient}
-                      </h3>
-                    </div>
-
-                    <FiChevronDown
-                      className={`w-5 h-5 text-teal-950 flex-shrink-0 transition-transform duration-300 ${
-                        isExpanded ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-
-                  <AnimatePresence initial={false}>
-                    {isExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-6 pb-6 pt-2">
-                          <div className="bg-cream-50 rounded-xl p-5 border-l-4 border-amber-500">
-                            <div className="grid grid-cols-2 gap-4 mb-4">
-                              <div>
-                                <span className="block text-[10px] uppercase tracking-wide text-ink-soft font-bold mb-1">
-                                  Treatment
-                                </span>
-                                <span className="text-teal-950 font-semibold text-sm">
-                                  {rx.treatment}
-                                </span>
-                              </div>
-                              <div>
-                                <span className="block text-[10px] uppercase tracking-wide text-ink-soft font-bold mb-1">
-                                  Dosage
-                                </span>
-                                <span className="text-teal-950 font-semibold text-sm">
-                                  {rx.dosage}
-                                </span>
-                              </div>
-                              <div>
-                                <span className="block text-[10px] uppercase tracking-wide text-ink-soft font-bold mb-1">
-                                  Duration
-                                </span>
-                                <span className="text-teal-950 font-semibold text-sm">
-                                  {rx.duration}
-                                </span>
-                              </div>
-                            </div>
-                            <p className="text-xs text-ink-soft italic font-mono">
-                              ℞ Kothowain Community Health Program — Renew at nearest health camp
-                            </p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
       {/* 4. HEALTH IMPACT — vital signs dashboard                      */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-teal-950 relative overflow-hidden">
         <div className="absolute -top-20 right-0 w-[400px] h-[400px] rounded-full bg-amber-500/5 pointer-events-none" />
         <div className="absolute -bottom-20 left-0 w-[300px] h-[300px] rounded-full bg-teal-400/5 pointer-events-none" />
-        
+
         <div className="max-w-[1100px] mx-auto px-6 lg:px-10 relative">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
@@ -677,7 +590,9 @@ const MedicalSupportPage = () => {
                   <span className="text-xs text-ink-soft font-bold">
                     {camp.capacity}
                   </span>
-                  <span className={`text-xs font-bold ${camp.full ? "text-amber-500" : "text-teal-600"}`}>
+                  <span
+                    className={`text-xs font-bold ${camp.full ? "text-amber-500" : "text-teal-600"}`}
+                  >
                     {camp.full ? "FULL" : "OPEN"}
                   </span>
                 </div>
@@ -747,8 +662,8 @@ const MedicalSupportPage = () => {
               <p className="text-ink-soft text-sm leading-relaxed mb-5">
                 Anjali walks between four villages every week, carrying a
                 medical bag and a ledger of patients. She can diagnose the
-                common illnesses, treat minor injuries, and knows exactly
-                when to send someone to the clinic in town.
+                common illnesses, treat minor injuries, and knows exactly when
+                to send someone to the clinic in town.
               </p>
 
               <div className="grid grid-cols-2 gap-x-6 gap-y-3 mb-6 border-t border-b border-dashed border-teal-950/15 py-5">
@@ -756,7 +671,9 @@ const MedicalSupportPage = () => {
                   <span className="block text-[10px] uppercase tracking-wide text-ink-soft font-bold mb-1">
                     Serving since
                   </span>
-                  <span className="text-teal-950 font-semibold text-sm">2017</span>
+                  <span className="text-teal-950 font-semibold text-sm">
+                    2017
+                  </span>
                 </div>
                 <div>
                   <span className="block text-[10px] uppercase tracking-wide text-ink-soft font-bold mb-1">
@@ -768,13 +685,17 @@ const MedicalSupportPage = () => {
                   <span className="block text-[10px] uppercase tracking-wide text-ink-soft font-bold mb-1">
                     Patients this year
                   </span>
-                  <span className="text-teal-950 font-semibold text-sm">340</span>
+                  <span className="text-teal-950 font-semibold text-sm">
+                    340
+                  </span>
                 </div>
                 <div>
                   <span className="block text-[10px] uppercase tracking-wide text-ink-soft font-bold mb-1">
                     Referrals made
                   </span>
-                  <span className="text-teal-950 font-semibold text-sm">52</span>
+                  <span className="text-teal-950 font-semibold text-sm">
+                    52
+                  </span>
                 </div>
               </div>
 
@@ -877,14 +798,15 @@ const MedicalSupportPage = () => {
 
             <h2 className="font-display font-semibold text-4xl lg:text-5xl text-cream-50 leading-[1.05] tracking-tight mb-4">
               Fund a{" "}
-              <span className="text-amber-500 italic font-normal">health camp</span>{" "}
+              <span className="text-amber-500 italic font-normal">
+                health camp
+              </span>{" "}
               for a village
             </h2>
 
             <p className="text-cream-50/70 text-lg max-w-[420px] leading-relaxed mb-8">
-              One camp treats 200 patients. Your gift brings a doctor, a
-              nurse, and a full medical kit to a village that's never had a
-              clinic.
+              One camp treats 200 patients. Your gift brings a doctor, a nurse,
+              and a full medical kit to a village that's never had a clinic.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -916,9 +838,18 @@ const MedicalSupportPage = () => {
           scrollbar-width: none;
         }
         @keyframes ping-slow {
-          0% { transform: scale(1); opacity: 0.8; }
-          50% { transform: scale(1.5); opacity: 0.4; }
-          100% { transform: scale(1); opacity: 0.8; }
+          0% {
+            transform: scale(1);
+            opacity: 0.8;
+          }
+          50% {
+            transform: scale(1.5);
+            opacity: 0.4;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 0.8;
+          }
         }
         .animate-ping-slow {
           animation: ping-slow 2s ease-in-out infinite;

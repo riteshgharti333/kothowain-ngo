@@ -229,9 +229,7 @@ const ContactPage = () => {
 
   return (
     <main className="">
-      {/* ============================================================ */}
-      {/* 1. HERO                                                        */}
-      {/* ============================================================ */}
+      {/* 1. HERO */}
       <PageBanner
         image="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&h=900&fit=crop&q=80"
         breadcrumb="Contact"
@@ -243,9 +241,7 @@ const ContactPage = () => {
         seed={900}
       />
 
-      {/* ============================================================ */}
-      {/* 2. CONTACT INFO CARDS — quick ways to reach us               */}
-      {/* ============================================================ */}
+      {/* 2. CONTACT INFO CARDS */}
       <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
           <div className="text-center mb-14">
@@ -260,6 +256,9 @@ const ContactPage = () => {
               text="Reach us anytime"
               className="justify-center"
             />
+            <p className="text-ink-soft text-sm mt-4 max-w-[400px] mx-auto">
+              We're here to answer your questions and explore ways to work together.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -270,9 +269,12 @@ const ContactPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
+                className="group relative bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-teal-950/5"
               >
-                <div className={`w-14 h-14 rounded-2xl ${info.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                {/* Decorative corner circle */}
+                <div className="absolute -top-3 -right-3 w-16 h-16 rounded-full bg-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                <div className={`w-14 h-14 rounded-2xl ${info.color} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}>
                   <info.icon className="w-7 h-7 text-cream-50" />
                 </div>
                 <h3 className="font-display text-lg text-teal-950 font-semibold mb-3">
@@ -287,20 +289,21 @@ const ContactPage = () => {
                 </div>
                 <Link
                   href="#"
-                  className="inline-flex items-center gap-1.5 text-amber-500 text-sm font-bold hover:text-teal-950 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-amber-500 text-sm font-bold hover:text-teal-950 transition-colors group-hover:gap-2.5 transition-all"
                 >
                   {info.action}
                   <FiArrowRight className="w-3.5 h-3.5" />
                 </Link>
+                
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* 3. CONTACT FORM + MAP — main interaction area                 */}
-      {/* ============================================================ */}
+      {/* 3. CONTACT FORM + MAP */}
       <section className="py-[90px] lg:py-[120px] bg-cream-100">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -310,8 +313,10 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="bg-white rounded-3xl p-8 lg:p-10 shadow-xl"
+              className="bg-white rounded-3xl p-8 lg:p-10 shadow-xl relative overflow-hidden"
             >
+              <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-amber-500/5 pointer-events-none" />
+              
               <div className="flex items-center gap-3 mb-6">
                 <Envelope active={true} />
                 <div>
@@ -461,13 +466,13 @@ const ContactPage = () => {
               transition={{ duration: 0.7 }}
               className="space-y-6"
             >
-              {/* Map placeholder */}
-              <div className="relative rounded-3xl overflow-hidden shadow-xl h-[300px] bg-teal-950">
+              {/* Map */}
+              <div className="relative rounded-3xl overflow-hidden shadow-xl h-[300px] bg-teal-950 group">
                 <Image
                   src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=400&fit=crop&q=80"
                   alt="Map"
                   fill
-                  className="object-cover opacity-60"
+                  className="object-cover opacity-60 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500"
                   unoptimized
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -484,7 +489,9 @@ const ContactPage = () => {
               </div>
 
               {/* Social links */}
-              <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <div className="bg-white rounded-3xl p-6 shadow-lg relative overflow-hidden">
+                <div className="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-amber-500/5" />
+                
                 <h3 className="font-display text-lg text-teal-950 font-semibold mb-4">
                   Follow our journey
                 </h3>
@@ -497,7 +504,7 @@ const ContactPage = () => {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.08 }}
-                      className="group flex items-center gap-2 bg-cream-50 hover:bg-teal-950 rounded-full px-4 py-2 transition-all duration-300"
+                      className="group flex items-center gap-2 bg-cream-50 hover:bg-teal-950 rounded-full px-4 py-2 transition-all duration-300 hover:scale-105"
                     >
                       <social.icon className="w-4 h-4 text-teal-700 group-hover:text-amber-400 transition-colors" />
                       <span className="text-xs font-semibold text-teal-950 group-hover:text-cream-50 transition-colors">
@@ -512,9 +519,7 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* 4. OFFICE LOCATIONS — interactive cards                       */}
-      {/* ============================================================ */}
+      {/* 4. OFFICE LOCATIONS */}
       <section className="py-[90px] lg:py-[120px] bg-paper">
         <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
           <div className="text-center mb-14">
@@ -540,7 +545,7 @@ const ContactPage = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => setActiveOffice(index)}
-                className={`group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer ${
+                className={`group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer hover:-translate-y-2 ${
                   activeOffice === index ? "ring-4 ring-amber-500" : ""
                 }`}
               >
@@ -552,7 +557,7 @@ const ContactPage = () => {
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                     unoptimized
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-950/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-950/70 to-transparent" />
                   <div className="absolute bottom-4 left-4">
                     <span className="text-cream-50 font-display text-xl font-semibold">
                       {office.city}
@@ -582,15 +587,16 @@ const ContactPage = () => {
                     </p>
                   </div>
                 </div>
+                
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* 5. FAQ SECTION                                                */}
-      {/* ============================================================ */}
+      {/* 5. FAQ SECTION */}
       <section className="py-[90px] lg:py-[120px] bg-cream-100">
         <div className="max-w-[800px] mx-auto px-6 lg:px-10">
           <div className="text-center mb-14">
@@ -617,7 +623,7 @@ const ContactPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.06 }}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden"
+                  className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : index)}
@@ -654,9 +660,7 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* 6. NEWSLETTER SIGNUP                                          */}
-      {/* ============================================================ */}
+      {/* 6. NEWSLETTER SIGNUP */}
       <section className="py-[90px] lg:py-[120px] bg-teal-950 relative overflow-hidden">
         <div className="absolute -top-20 right-0 w-[400px] h-[400px] rounded-full bg-amber-500/5 pointer-events-none" />
         <div className="absolute -bottom-20 left-0 w-[300px] h-[300px] rounded-full bg-teal-400/5 pointer-events-none" />
@@ -702,9 +706,7 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* 7. FINAL CTA                                                  */}
-      {/* ============================================================ */}
+      {/* 7. FINAL CTA */}
       <section className="relative overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px]">
           <motion.div

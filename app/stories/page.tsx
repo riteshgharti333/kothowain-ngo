@@ -279,7 +279,7 @@ const StoryPage = () => {
     },
   ];
 
-  const [activeStory, setActiveStory] = useState(1);
+  const [activeStory, setActiveStory] = useState<number | null>(null);
   const [showAllStories, setShowAllStories] = useState(false);
 
   const displayedStories = showAllStories ? stories : stories.slice(0, 3);
