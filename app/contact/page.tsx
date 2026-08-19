@@ -40,29 +40,41 @@ import { useState } from "react";
 /* ================================================================== */
 
 // Letter envelope component
+
 const Envelope = ({ active = false }: { active?: boolean }) => (
-  <motion.div
-    animate={active ? { rotate: [0, -5, 5, 0] } : {}}
-    transition={{ duration: 2, repeat: active ? Infinity : 0 }}
-    className="relative w-24 h-16"
-  >
-    <div className="absolute inset-0 bg-teal-950 rounded-lg" />
-    <div
-      className="absolute top-0 left-0 right-0 h-0 w-0 border-l-[48px] border-r-[48px] border-t-[32px] border-l-transparent border-r-transparent border-t-amber-500"
-      style={{ transform: "translateY(-1px)" }}
-    />
-    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-10 h-6 bg-amber-400/30 rounded-t-lg" />
+  <div className="relative w-11 h-11 flex items-center justify-center rounded-2xl bg-teal-950 shrink-0">
+    {/* soft pulse ring, only when active */}
     {active && (
       <motion.span
-        animate={{ y: [0, -10, 0], opacity: [1, 0, 1] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-        className="absolute -top-8 left-1/2 transform -translate-x-1/2"
+        className="absolute inset-0 rounded-2xl bg-amber-500/25"
+        animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0, 0.6] }}
+        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+      />
+    )}
+
+    {/* mail icon — gentle single-axis tilt, no fighting animations */}
+    <motion.span
+      className="relative z-10"
+      animate={active ? { rotate: [0, -6, 6, 0] } : {}}
+      transition={{ duration: 2.4, repeat: active ? Infinity : 0, ease: "easeInOut" }}
+    >
+      <FiMail className="w-5 h-5 text-amber-400" />
+    </motion.span>
+
+    {/* send accent — one clean upward pass, synced to the same loop length
+        instead of racing the envelope on a different timer */}
+    {active && (
+      <motion.span
+        className="absolute -top-1 -right-1 z-10"
+        animate={{ y: [0, -6, 0], opacity: [0, 1, 0] }}
+        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
       >
-        <FiSend className="w-5 h-5 text-amber-500" />
+        <FiSend className="w-3 h-3 text-amber-500" />
       </motion.span>
     )}
-  </motion.div>
+  </div>
 );
+
 
 // Location pin with pulse
 const LocationPin = ({ active = false }: { active?: boolean }) => (
