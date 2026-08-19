@@ -270,7 +270,7 @@ const ContactPage = () => {
   };
 
   return (
-    <main className="">
+    <main className="overflow-hidden">
       {/* 1. HERO */}
       <PageBanner
         image="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&h=900&fit=crop&q=80"
@@ -349,7 +349,7 @@ const ContactPage = () => {
       </section>
 
       {/* 3. CONTACT FORM + MAP */}
-      <section className="py-[90px] lg:py-[120px] bg-cream-50">
+      <section className="py-[90px] lg:py-[120px] bg-cream-50 overflow-hidden">
         <div className="max-w-[1200px] mx-auto container-px">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Contact Form */}

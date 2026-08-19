@@ -324,7 +324,7 @@ const DonatePage = () => {
   const [activeArea, setActiveArea] = useState("education");
 
   return (
-    <main className="">
+    <main className="overflow-hidden">
       {/* ============================================================ */}
       {/* 1. HERO                                                        */}
       {/* ============================================================ */}
