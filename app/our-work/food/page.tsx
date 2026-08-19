@@ -21,6 +21,7 @@ import {
 import HeadingWithPaint from "../../components/HeadingWithPaint";
 import PageBanner from "../../components/PageBanner";
 import { useState } from "react";
+import SplitSection from "@/app/components/SplitSection";
 
 const FoodPage = () => {
   /* ---------------------------------------------------------------- */
@@ -186,7 +187,7 @@ const FoodPage = () => {
       {/* 2. FROM HARVEST TO HOME — bento image mosaic                  */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1280px] mx-auto container-px">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             {/* Text */}
             <div>
@@ -276,7 +277,7 @@ const FoodPage = () => {
       {/* 3. ON THE MENU — program menu cards                            */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1280px] mx-auto container-px">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -337,7 +338,7 @@ const FoodPage = () => {
       {/* 4. THE TIFFIN ROUTE — signature stacked-tier motif */}
       <section className="py-[90px] lg:py-[130px] bg-teal-950 relative overflow-hidden">
         <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-amber-500/5 pointer-events-none" />
-        <div className="max-w-[820px] mx-auto px-6 lg:px-10 relative">
+        <div className="max-w-[820px] mx-auto container-px relative">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -504,7 +505,7 @@ const FoodPage = () => {
       {/* 6. RECIPE CARD — cook spotlight                                */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1000px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -600,12 +601,11 @@ const FoodPage = () => {
         </div>
       </section>
 
-
       {/* ============================================================ */}
       {/* 8. MARKET STALL PARTNERS                                       */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1100px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -649,67 +649,29 @@ const FoodPage = () => {
       {/* ============================================================ */}
       {/* 9. DINNER INVITATION CTA                                       */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px]">
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden order-1 lg:order-2 min-h-[280px]"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&h=900&fit=crop&q=80"
-              alt="Family sharing a meal"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-teal-950/40 to-transparent lg:from-transparent lg:to-teal-950/60" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-teal-950 p-10 lg:p-14 flex flex-col justify-center relative overflow-hidden order-2 lg:order-1"
-          >
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-amber-500/10" />
-
-            <span className="font-mono text-xs tracking-[0.25em] uppercase text-amber-500 font-bold mb-5 inline-flex items-center gap-2">
-              <FiGift className="w-4 h-4" /> You're invited
-            </span>
-
-            <h2 className="font-display font-semibold text-4xl lg:text-5xl text-cream-50 leading-[1.05] tracking-tight mb-4">
-              Set a place at the{" "}
-              <span className="text-amber-500 italic font-normal">table</span>
-            </h2>
-
-            <p className="text-cream-50/70 text-lg max-w-[420px] leading-relaxed mb-8">
-              One gift funds one week of meals for one community kitchen. Pull
-              up a chair.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="#donate"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-amber-500 text-teal-950 font-semibold text-sm transition-all duration-300 hover:bg-cream-50 hover:-translate-y-0.5 active:scale-95"
-              >
-                Fund a Meal
-                <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="#volunteer"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border-2 border-cream-50/30 text-cream-50 font-semibold text-sm transition-all duration-300 hover:border-cream-50 hover:bg-cream-50 hover:text-teal-950 hover:-translate-y-0.5 active:scale-95"
-              >
-                Volunteer to Cook
-                <FiHeart className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <SplitSection
+        image="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&h=900&fit=crop&q=80"
+        imageAlt="Family sharing a meal"
+        badgeIcon={FiGift}
+        badgeText="You're invited"
+        title="Set a place at the"
+        highlightText="table"
+        description="One gift funds one week of meals for one community kitchen. Pull up a chair."
+        buttons={[
+          {
+            text: "Fund a Meal",
+            href: "#donate",
+            icon: FiArrowRight,
+            variant: "primary",
+          },
+          {
+            text: "Volunteer to Cook",
+            href: "#volunteer",
+            icon: FiHeart,
+            variant: "outline",
+          },
+        ]}
+      />
 
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {

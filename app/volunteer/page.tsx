@@ -301,7 +301,7 @@ const VolunteerPage = () => {
 
       {/* 2. VOLUNTEER IMPACT — stats with handshake metaphor */}
 <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-  <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+  <div className="max-w-[1100px] mx-auto container-px">
     <div className="text-center mb-14">
       <div className="flex items-center justify-center gap-3 mb-6">
         <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -368,7 +368,7 @@ const VolunteerPage = () => {
 
       {/* 5. VOLUNTEER STORIES — testimonials */}
 <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-  <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+  <div className="max-w-[1100px] mx-auto container-px">
     <div className="text-center mb-14">
       <div className="flex items-center justify-center gap-3 mb-6">
         <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -471,7 +471,7 @@ const VolunteerPage = () => {
       {/* 7. FAQ SECTION                                                */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[800px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[800px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -533,71 +533,7 @@ const VolunteerPage = () => {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* 8. CTA SECTION                                                */}
-      {/* ============================================================ */}
-      <section className="relative overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px]">
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden order-1 lg:order-2 min-h-[280px]"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=900&fit=crop&q=80"
-              alt="Volunteers working together"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-teal-950/40 to-transparent lg:from-transparent lg:to-teal-950/60" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-teal-950 p-10 lg:p-14 flex flex-col justify-center relative overflow-hidden order-2 lg:order-1"
-          >
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-amber-500/10" />
-            <div className="absolute top-10 right-20 w-20 h-20 rounded-full bg-teal-400/5" />
-
-            <span className="font-mono text-xs tracking-[0.25em] uppercase text-amber-500 font-bold mb-5 inline-flex items-center gap-2">
-              <FiUserPlus className="w-4 h-4" /> Join us
-            </span>
-
-            <h2 className="font-display font-semibold text-4xl lg:text-5xl text-cream-50 leading-[1.05] tracking-tight mb-4">
-              Ready to{" "}
-              <span className="text-amber-500 italic font-normal">make a difference?</span>
-            </h2>
-
-            <p className="text-cream-50/70 text-lg max-w-[420px] leading-relaxed mb-8">
-              Your skills, your time, your heart — that's all it takes. Start
-              your volunteer journey today.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="#apply"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-amber-500 text-teal-950 font-semibold text-sm transition-all duration-300 hover:bg-cream-50 hover:-translate-y-0.5 active:scale-95"
-              >
-                Apply Now
-                <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="#contact"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border-2 border-cream-50/30 text-cream-50 font-semibold text-sm transition-all duration-300 hover:border-cream-50 hover:bg-cream-50 hover:text-teal-950 hover:-translate-y-0.5 active:scale-95"
-              >
-                Ask a Question
-                <FiMessageCircle className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+     
 
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {

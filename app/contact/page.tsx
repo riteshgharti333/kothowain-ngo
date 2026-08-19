@@ -32,6 +32,7 @@ import {
 } from "react-icons/fi";
 import HeadingWithPaint from "../components/HeadingWithPaint";
 import PageBanner from "../components/PageBanner";
+import SplitSection from "../components/SplitSection";
 import { useState } from "react";
 
 /* ================================================================== */
@@ -46,7 +47,10 @@ const Envelope = ({ active = false }: { active?: boolean }) => (
     className="relative w-24 h-16"
   >
     <div className="absolute inset-0 bg-teal-950 rounded-lg" />
-    <div className="absolute top-0 left-0 right-0 h-0 w-0 border-l-[48px] border-r-[48px] border-t-[32px] border-l-transparent border-r-transparent border-t-amber-500" style={{ transform: 'translateY(-1px)' }} />
+    <div
+      className="absolute top-0 left-0 right-0 h-0 w-0 border-l-[48px] border-r-[48px] border-t-[32px] border-l-transparent border-r-transparent border-t-amber-500"
+      style={{ transform: "translateY(-1px)" }}
+    />
     <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-10 h-6 bg-amber-400/30 rounded-t-lg" />
     {active && (
       <motion.span
@@ -65,10 +69,10 @@ const LocationPin = ({ active = false }: { active?: boolean }) => (
   <motion.div
     animate={active ? { scale: [1, 1.2, 1] } : {}}
     transition={{ duration: 1.5, repeat: active ? Infinity : 0 }}
-    className="relative w-16 h-16"
+    className="relative w-10 h-10"
   >
     <div className="absolute inset-0 bg-amber-500 rounded-full flex items-center justify-center">
-      <FiMapPin className="w-8 h-8 text-teal-950" />
+      <FiMapPin className="w-5 h-5 text-teal-950" />
     </div>
     {active && (
       <motion.span
@@ -88,7 +92,8 @@ const ResponseTime = ({ time = "24 hours" }: { time?: string }) => (
       <span className="relative inline-flex rounded-full h-3 w-3 bg-teal-500"></span>
     </span>
     <span className="text-ink-soft">
-      Usually responds within <span className="font-bold text-teal-950">{time}</span>
+      Usually responds within{" "}
+      <span className="font-bold text-teal-950">{time}</span>
     </span>
   </div>
 );
@@ -113,11 +118,7 @@ const ContactPage = () => {
     {
       icon: FiPhone,
       title: "Call Us",
-      lines: [
-        "+880 1712-345678",
-        "+880 1912-345678",
-        "Sun-Thu, 9am-5pm",
-      ],
+      lines: ["+880 1712-345678", "+880 1912-345678", "Sun-Thu, 9am-5pm"],
       action: "Call Now",
       color: "bg-teal-700",
     },
@@ -153,7 +154,8 @@ const ContactPage = () => {
       phone: "+880 1712-345678",
       email: "dhaka@kothowain.org",
       hours: "Sun-Thu, 9am-5pm",
-      image: "https://images.unsplash.com/photo-1560840067-ddcaeb7831d2?w=600&h=400&fit=crop&q=80",
+      image:
+        "https://images.unsplash.com/photo-1560840067-ddcaeb7831d2?w=600&h=400&fit=crop&q=80",
     },
     {
       city: "Rangamati",
@@ -162,7 +164,8 @@ const ContactPage = () => {
       phone: "+880 1812-345678",
       email: "rangamati@kothowain.org",
       hours: "Sun-Thu, 9am-5pm",
-      image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&h=400&fit=crop&q=80",
+      image:
+        "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&h=400&fit=crop&q=80",
     },
     {
       city: "Bandarban",
@@ -171,34 +174,69 @@ const ContactPage = () => {
       phone: "+880 1912-345678",
       email: "bandarban@kothowain.org",
       hours: "Sun-Thu, 9am-5pm",
-      image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600&h=400&fit=crop&q=80",
+      image:
+        "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=600&h=400&fit=crop&q=80",
     },
   ];
 
   const socialLinks = [
-    { icon: FiFacebook, name: "Facebook", handle: "@kothowain", color: "bg-blue-600", url: "#" },
-    { icon: FiTwitter, name: "Twitter", handle: "@kothowain", color: "bg-sky-500", url: "#" },
-    { icon: FiInstagram, name: "Instagram", handle: "@kothowain", color: "bg-pink-600", url: "#" },
-    { icon: FiYoutube, name: "YouTube", handle: "Kothowain Foundation", color: "bg-red-600", url: "#" },
-    { icon: FiLinkedin, name: "LinkedIn", handle: "Kothowain Foundation", color: "bg-blue-800", url: "#" },
+    {
+      icon: FiFacebook,
+      name: "Facebook",
+      handle: "@kothowain",
+      color: "bg-blue-600",
+      url: "#",
+    },
+    {
+      icon: FiTwitter,
+      name: "Twitter",
+      handle: "@kothowain",
+      color: "bg-sky-500",
+      url: "#",
+    },
+    {
+      icon: FiInstagram,
+      name: "Instagram",
+      handle: "@kothowain",
+      color: "bg-pink-600",
+      url: "#",
+    },
+    {
+      icon: FiYoutube,
+      name: "YouTube",
+      handle: "Kothowain Foundation",
+      color: "bg-red-600",
+      url: "#",
+    },
+    {
+      icon: FiLinkedin,
+      name: "LinkedIn",
+      handle: "Kothowain Foundation",
+      color: "bg-blue-800",
+      url: "#",
+    },
   ];
 
   const faqs = [
     {
       question: "How quickly will I get a response?",
-      answer: "We typically respond to all inquiries within 24 hours during business days (Sunday-Thursday). For urgent matters, please call our office directly.",
+      answer:
+        "We typically respond to all inquiries within 24 hours during business days (Sunday-Thursday). For urgent matters, please call our office directly.",
     },
     {
       question: "Can I visit your project sites?",
-      answer: "Yes! We welcome visitors to our project sites in the Chittagong Hill Tracts. Please contact us at least 2 weeks in advance so we can arrange logistics and ensure community availability.",
+      answer:
+        "Yes! We welcome visitors to our project sites in the Chittagong Hill Tracts. Please contact us at least 2 weeks in advance so we can arrange logistics and ensure community availability.",
     },
     {
       question: "How can I partner with Kothowain?",
-      answer: "We're always open to partnerships with organizations, businesses, and individuals who share our mission. Email us at partnership@kothowain.org with your proposal or idea.",
+      answer:
+        "We're always open to partnerships with organizations, businesses, and individuals who share our mission. Email us at partnership@kothowain.org with your proposal or idea.",
     },
     {
       question: "Do you accept in-kind donations?",
-      answer: "Yes, we accept in-kind donations including medical supplies, educational materials, water testing equipment, and more. Please contact us to discuss what items we currently need.",
+      answer:
+        "Yes, we accept in-kind donations including medical supplies, educational materials, water testing equipment, and more. Please contact us to discuss what items we currently need.",
     },
   ];
 
@@ -220,7 +258,11 @@ const ContactPage = () => {
     setTimeout(() => setFormSubmitted(false), 5000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -243,7 +285,7 @@ const ContactPage = () => {
 
       {/* 2. CONTACT INFO CARDS */}
       <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1200px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -257,7 +299,8 @@ const ContactPage = () => {
               className="justify-center"
             />
             <p className="text-ink-soft text-sm mt-4 max-w-[400px] mx-auto">
-              We're here to answer your questions and explore ways to work together.
+              We're here to answer your questions and explore ways to work
+              together.
             </p>
           </div>
 
@@ -273,8 +316,10 @@ const ContactPage = () => {
               >
                 {/* Decorative corner circle */}
                 <div className="absolute -top-3 -right-3 w-16 h-16 rounded-full bg-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                <div className={`w-14 h-14 rounded-2xl ${info.color} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}>
+
+                <div
+                  className={`w-14 h-14 rounded-2xl ${info.color} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}
+                >
                   <info.icon className="w-7 h-7 text-cream-50" />
                 </div>
                 <h3 className="font-display text-lg text-teal-950 font-semibold mb-3">
@@ -294,7 +339,7 @@ const ContactPage = () => {
                   {info.action}
                   <FiArrowRight className="w-3.5 h-3.5" />
                 </Link>
-                
+
                 {/* Bottom accent line */}
                 <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
@@ -304,8 +349,8 @@ const ContactPage = () => {
       </section>
 
       {/* 3. CONTACT FORM + MAP */}
-      <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
+      <section className="py-[90px] lg:py-[120px] bg-cream-50">
+        <div className="max-w-[1200px] mx-auto container-px">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Contact Form */}
             <motion.div
@@ -316,7 +361,7 @@ const ContactPage = () => {
               className="bg-white rounded-3xl p-8 lg:p-10 shadow-xl relative overflow-hidden"
             >
               <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-amber-500/5 pointer-events-none" />
-              
+
               <div className="flex items-center gap-3 mb-6">
                 <Envelope active={true} />
                 <div>
@@ -348,7 +393,8 @@ const ContactPage = () => {
                       Message Sent!
                     </h3>
                     <p className="text-ink-soft text-sm mb-6">
-                      Thank you for reaching out, {formData.name}. We'll get back to you within 24 hours.
+                      Thank you for reaching out, {formData.name}. We'll get
+                      back to you within 24 hours.
                     </p>
                     <button
                       onClick={() => setFormSubmitted(false)}
@@ -378,7 +424,7 @@ const ContactPage = () => {
                           onChange={handleChange}
                           required
                           placeholder="Full name"
-                          className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all"
+                          className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all bg-cream-50"
                         />
                       </div>
                       <div>
@@ -392,7 +438,7 @@ const ContactPage = () => {
                           onChange={handleChange}
                           required
                           placeholder="you@example.com"
-                          className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all"
+                          className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all bg-cream-50"
                         />
                       </div>
                     </div>
@@ -408,7 +454,7 @@ const ContactPage = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="+880 1XXX-XXXXXX"
-                          className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all"
+                          className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all bg-cream-50"
                         />
                       </div>
                       <div>
@@ -419,7 +465,7 @@ const ContactPage = () => {
                           name="subject"
                           value={formData.subject}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all"
+                          className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all bg-cream-50"
                         >
                           <option>General Inquiry</option>
                           <option>Volunteering</option>
@@ -442,7 +488,7 @@ const ContactPage = () => {
                         required
                         rows={5}
                         placeholder="Tell us how we can help..."
-                        className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all resize-none"
+                        className="w-full px-4 py-3 rounded-xl border border-teal-950/10 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition-all resize-none bg-cream-50"
                       />
                     </div>
 
@@ -466,24 +512,29 @@ const ContactPage = () => {
               transition={{ duration: 0.7 }}
               className="space-y-6"
             >
-              {/* Map */}
+              {/* Real Map */}
               <div className="relative rounded-3xl overflow-hidden shadow-xl h-[300px] bg-teal-950 group">
-                <Image
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=400&fit=crop&q=80"
-                  alt="Map"
-                  fill
-                  className="object-cover opacity-60 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500"
-                  unoptimized
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.1423465009627!2d90.4215646!3d23.8130868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c64c103a8093%3A0xd660a4f503652194!2sBanani%2C%20Dhaka%201213!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 w-full h-full"
                 />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <LocationPin active={true} />
-                    <p className="text-cream-50 font-display font-semibold mt-2">
-                      Kothowain Foundation
-                    </p>
-                    <p className="text-cream-50/70 text-sm">
-                      Banani, Dhaka
-                    </p>
+
+                {/* Location overlay */}
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg pointer-events-none">
+                  <div className="flex items-center gap-2">
+                    <LocationPin active={false} />
+                    <div>
+                      <p className="text-teal-950 font-display font-semibold text-sm">
+                        Kothowain Foundation
+                      </p>
+                      <p className="text-teal-950/70 text-xs">Banani, Dhaka</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -491,7 +542,7 @@ const ContactPage = () => {
               {/* Social links */}
               <div className="bg-white rounded-3xl p-6 shadow-lg relative overflow-hidden">
                 <div className="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-amber-500/5" />
-                
+
                 <h3 className="font-display text-lg text-teal-950 font-semibold mb-4">
                   Follow our journey
                 </h3>
@@ -521,7 +572,7 @@ const ContactPage = () => {
 
       {/* 4. OFFICE LOCATIONS */}
       <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1100px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -587,7 +638,7 @@ const ContactPage = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 {/* Bottom accent line */}
                 <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
@@ -597,8 +648,8 @@ const ContactPage = () => {
       </section>
 
       {/* 5. FAQ SECTION */}
-      <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[800px] mx-auto px-6 lg:px-10">
+      <section className="py-[90px] lg:py-[120px] bg-cream-50">
+        <div className="max-w-[800px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -660,116 +711,30 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* 6. NEWSLETTER SIGNUP */}
-      <section className="py-[90px] lg:py-[120px] bg-teal-950 relative overflow-hidden">
-        <div className="absolute -top-20 right-0 w-[400px] h-[400px] rounded-full bg-amber-500/5 pointer-events-none" />
-        <div className="absolute -bottom-20 left-0 w-[300px] h-[300px] rounded-full bg-teal-400/5 pointer-events-none" />
-        
-        <div className="max-w-[600px] mx-auto px-6 lg:px-10 relative text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-              <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                Stay connected
-              </span>
-              <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-            </div>
-            
-            <h2 className="font-display font-semibold text-3xl lg:text-4xl text-cream-50 mb-4">
-              Get updates from the hills
-            </h2>
-            <p className="text-cream-50/70 text-base max-w-[400px] mx-auto leading-relaxed mb-8">
-              Subscribe to our newsletter for stories, impact updates, and
-              opportunities to get involved.
-            </p>
-            
-            <form className="flex flex-col sm:flex-row gap-4 max-w-[500px] mx-auto">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 px-5 py-3.5 rounded-full bg-cream-50/10 border border-cream-50/20 text-cream-50 placeholder-cream-50/50 focus:border-amber-500 focus:outline-none transition-colors"
-              />
-              <button
-                type="submit"
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-amber-500 text-teal-950 font-semibold text-sm transition-all duration-300 hover:bg-cream-50 hover:-translate-y-0.5 active:scale-95"
-              >
-                Subscribe
-                <FiSend className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
-            </form>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 7. FINAL CTA */}
-      <section className="relative overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px]">
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden order-1 lg:order-2 min-h-[280px]"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&h=900&fit=crop&q=80"
-              alt="Community connection"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-teal-950/40 to-transparent lg:from-transparent lg:to-teal-950/60" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-teal-950 p-10 lg:p-14 flex flex-col justify-center relative overflow-hidden order-2 lg:order-1"
-          >
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-amber-500/10" />
-            <div className="absolute top-10 right-20 w-20 h-20 rounded-full bg-teal-400/5" />
-
-            <span className="font-mono text-xs tracking-[0.25em] uppercase text-amber-500 font-bold mb-5 inline-flex items-center gap-2">
-              <FiHeart className="w-4 h-4" /> Ready when you are
-            </span>
-
-            <h2 className="font-display font-semibold text-4xl lg:text-5xl text-cream-50 leading-[1.05] tracking-tight mb-4">
-              Let's build{" "}
-              <span className="text-amber-500 italic font-normal">something together</span>
-            </h2>
-
-            <p className="text-cream-50/70 text-lg max-w-[420px] leading-relaxed mb-8">
-              Whether you're a donor, volunteer, partner, or just someone who
-              cares — we're here to talk about how we can make a difference
-              together.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="#donate"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-amber-500 text-teal-950 font-semibold text-sm transition-all duration-300 hover:bg-cream-50 hover:-translate-y-0.5 active:scale-95"
-              >
-                Make a Donation
-                <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/volunteer"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border-2 border-cream-50/30 text-cream-50 font-semibold text-sm transition-all duration-300 hover:border-cream-50 hover:bg-cream-50 hover:text-teal-950 hover:-translate-y-0.5 active:scale-95"
-              >
-                Become a Volunteer
-                <FiUsers className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* 7. FINAL CTA - Using SplitSection for consistency */}
+      <SplitSection
+        image="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&h=900&fit=crop&q=80"
+        imageAlt="Community connection"
+        badgeIcon={FiHeart}
+        badgeText="Ready when you are"
+        title="Let's build"
+        highlightText="something together"
+        description="Whether you're a donor, volunteer, partner, or just someone who cares — we're here to talk about how we can make a difference together."
+        buttons={[
+          {
+            text: "Make a Donation",
+            href: "#donate",
+            icon: FiArrowRight,
+            variant: "primary",
+          },
+          {
+            text: "Become a Volunteer",
+            href: "/volunteer",
+            icon: FiUsers,
+            variant: "outline",
+          },
+        ]}
+      />
 
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {

@@ -348,5 +348,4 @@ const Navbar = () => {
     </motion.header>
   );
 };
-
 export default Navbar;

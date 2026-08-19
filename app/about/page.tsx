@@ -22,6 +22,7 @@ import {
   FiGlobe,
   FiShare2,
   FiArrowLeft,
+  FiGift,
 } from "react-icons/fi";
 import HeadingWithPaint from "../components/HeadingWithPaint";
 import Team from "../components/Team";
@@ -34,6 +35,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useEffect, useRef, useState } from "react";
+import SplitSection from "../components/SplitSection";
 
 const AboutPage = () => {
   const Counter = ({
@@ -350,7 +352,7 @@ const AboutPage = () => {
     <main>
       {/* About Hero */}
       <PageBanner
-        image="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1600&h=900&fit=crop&q=80"
+        image="https://images.unsplash.com/photo-1594708767771-a7502209ff51?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Ds"
         breadcrumb="About"
         headingLine1="Building"
         headingHighlight="Dignity."
@@ -361,88 +363,91 @@ const AboutPage = () => {
       />
       {/* Who We Are */}
       <section className="py-[100px] lg:py-[120px] bg-paper">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1280px] mx-auto ">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-                <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-                  About the organization
-                </span>
-              </div>
-              <HeadingWithPaint
-                text="Hope for survival"
-                className="text-left mb-6"
-              />
-
-              {/* First paragraph */}
-              <p className="text-ink-soft leading-[1.8] text-base mb-4">
-                Therefore, considering the above situation and establishing as
-                change of agent for bringing positive and building confidence
-                amongst locality, the KOTHOWAIN organization (Vulnerable
-                People&apos;s Development Organization) established in 2003 by
-                some social development activist in response to the issues of
-                extreme poverty, low literacy rate, social and political
-                conflict, eroding cultural identity, climate, environment, and
-                high incidence of human rights violations among the indigenous
-                peoples in the Chittagong Hill Tracts of Bangladesh.
-              </p>
-
-              {/* Second paragraph */}
-              <p className="text-ink-soft leading-[1.8] text-base mb-4">
-                KOTHOWAIN a Tripura word meaning &apos;Hope for Survival&apos;
-                was officially registered as a non-government and non-political
-                voluntary development organization by the Social Service
-                Department of Bangladesh Government and it is registered for
-                foreign donations (voluntary activity regulations Act 2016) –NGO
-                affairs Bureau of Bangladesh Government.
-              </p>
-
-              {/* Third paragraph */}
-              <p className="text-ink-soft leading-[1.8] text-base mb-6">
-                The organization aims to develop the socio-economic conditions
-                of the most vulnerable and underprivileged people in the Hill
-                Tracts. Through the years, KOTHOWAIN has strived to build the
-                capacities of the communities to manage and implement projects
-                in a sustainable manner, have a voice in decision making, and
-                dignity as a people. This has been achieved in partnership with
-                local, national, and international agencies as well as
-                government institutions.
-              </p>
-
-              {/* Focus areas */}
-              <div className="mb-6">
-                <div className="font-display text-xl font-semibold text-teal-950 mb-4">
-                  KOTHOWAIN prioritized for focusing on the following areas:
+            <div className="container-px lg:px-0">
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
+                  <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
+                    About the organization
+                  </span>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {[
-                    "Human Rights and Indigenous Rights",
-                    "Livelihood",
-                    "Climate Change",
-                    "Primary & Higher Education",
-                    "Health and Sanitation",
-                    "Adolescent and Youth Development",
-                    "Empowerment and Employment",
-                    "Advocacy, Linkage and Networking",
-                  ].map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-2.5 text-sm text-ink font-medium"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0" />
-                      {item}
-                    </div>
-                  ))}
+                <HeadingWithPaint
+                  text="Hope for survival"
+                  className="text-left mb-6"
+                />
+
+                {/* First paragraph */}
+                <p className="text-ink-soft leading-[1.8] text-base mb-4">
+                  Therefore, considering the above situation and establishing as
+                  change of agent for bringing positive and building confidence
+                  amongst locality, the KOTHOWAIN organization (Vulnerable
+                  People&apos;s Development Organization) established in 2003 by
+                  some social development activist in response to the issues of
+                  extreme poverty, low literacy rate, social and political
+                  conflict, eroding cultural identity, climate, environment, and
+                  high incidence of human rights violations among the indigenous
+                  peoples in the Chittagong Hill Tracts of Bangladesh.
+                </p>
+
+                {/* Second paragraph */}
+                <p className="text-ink-soft leading-[1.8] text-base mb-4">
+                  KOTHOWAIN a Tripura word meaning &apos;Hope for Survival&apos;
+                  was officially registered as a non-government and
+                  non-political voluntary development organization by the Social
+                  Service Department of Bangladesh Government and it is
+                  registered for foreign donations (voluntary activity
+                  regulations Act 2016) –NGO affairs Bureau of Bangladesh
+                  Government.
+                </p>
+
+                {/* Third paragraph */}
+                <p className="text-ink-soft leading-[1.8] text-base mb-6">
+                  The organization aims to develop the socio-economic conditions
+                  of the most vulnerable and underprivileged people in the Hill
+                  Tracts. Through the years, KOTHOWAIN has strived to build the
+                  capacities of the communities to manage and implement projects
+                  in a sustainable manner, have a voice in decision making, and
+                  dignity as a people. This has been achieved in partnership
+                  with local, national, and international agencies as well as
+                  government institutions.
+                </p>
+
+                {/* Focus areas */}
+                <div className="mb-6">
+                  <div className="font-display text-xl font-semibold text-teal-950 mb-4">
+                    KOTHOWAIN prioritized for focusing on the following areas:
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {[
+                      "Human Rights and Indigenous Rights",
+                      "Livelihood",
+                      "Climate Change",
+                      "Primary & Higher Education",
+                      "Health and Sanitation",
+                      "Adolescent and Youth Development",
+                      "Empowerment and Employment",
+                      "Advocacy, Linkage and Networking",
+                    ].map((item) => (
+                      <div
+                        key={item}
+                        className="flex items-center gap-2.5 text-sm text-ink font-medium"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
             {/* Right Images - Auto-scrolling Masonry Columns */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
@@ -643,7 +648,7 @@ const AboutPage = () => {
         <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-amber-500/5 pointer-events-none" />
         <div className="absolute bottom-20 left-10 w-32 h-32 rounded-full bg-teal-950/5 pointer-events-none" />
 
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10 relative">
+        <div className="max-w-[900px] mx-auto container-px relative">
           <div className="text-center mb-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -730,7 +735,7 @@ const AboutPage = () => {
         <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-amber-500/5 pointer-events-none" />
         <div className="absolute bottom-20 left-10 w-32 h-32 rounded-full bg-teal-950/5 pointer-events-none" />
 
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
+        <div className="max-w-[1280px] mx-auto container-px relative">
           {/* Section Head */}
           <div className="text-center mb-16">
             <motion.div
@@ -760,7 +765,7 @@ const AboutPage = () => {
               viewport={{ once: true }}
               className="group relative rounded-[2rem] overflow-hidden shadow-xl"
             >
-              <div className="relative aspect-[16/10]">
+              <div className="relative aspect-[4/3] sm:aspect-[16/10]">
                 <Image
                   src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=400&fit=crop&q=80"
                   alt="Vision"
@@ -794,7 +799,7 @@ const AboutPage = () => {
               transition={{ delay: 0.1 }}
               className="group relative rounded-[2rem] overflow-hidden shadow-xl"
             >
-              <div className="relative aspect-[16/10]">
+              <div className="relative aspect-[4/3] sm:aspect-[16/10]">
                 <Image
                   src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&h=400&fit=crop&q=80"
                   alt="Mission"
@@ -815,8 +820,7 @@ const AboutPage = () => {
                 </div>
                 <p className="text-teal-950/80 text-sm leading-relaxed">
                   To bring sustainable positive change by reducing poverty among
-                  marginalized people, especially women and children, through
-                  participatory, rights-based programs in the CHT.
+                  marginalized people, especially women and children.
                 </p>
               </div>
             </motion.div>
@@ -857,91 +861,34 @@ const AboutPage = () => {
         </div>
       </section>
 
-            {/* Final CTA - Split Design with Right Image */}
-<section className="relative overflow-hidden">
-  <div className="">
-    <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px]">
-      {/* Left Content - Solid Teal */}
-      <motion.div
-        initial={{ opacity: 0, x: -40 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="bg-teal-950  lg:rounded-r-none p-10 lg:p-14 flex flex-col justify-center relative overflow-hidden"
-      >
-        {/* Decorative blobs */}
-        <div className="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-amber-500/10" />
-        <div className="absolute bottom-10 right-10 w-20 h-20 rounded-full bg-cream-50/5" />
-
-        <div className="relative">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
-            <span className="font-mono text-xs tracking-[0.18em] uppercase text-amber-500 font-bold">
-              Get involved
-            </span>
-          </div>
-
-          <h2 className="font-display font-semibold text-4xl lg:text-5xl text-cream-50 leading-[1.05] tracking-tight mb-4">
-            Be Part of the{" "}
-            <span className="text-amber-500 italic font-normal">Change</span>
-          </h2>
-
-          <p className="text-cream-50/70 text-lg max-w-[400px] leading-relaxed mb-8">
-            Change begins when people choose to act.
-          </p>
-
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="#donate"
-              className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-amber-500 text-teal-950 font-semibold text-sm transition-all duration-300 hover:bg-cream-50 hover:-translate-y-0.5 active:scale-95"
-            >
-              Donate Now
-              <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-            <Link
-              href="#volunteer"
-              className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border-2 border-cream-50/30 text-cream-50 font-semibold text-sm transition-all duration-300 hover:border-cream-50 hover:bg-cream-50 hover:text-teal-950 hover:-translate-y-0.5 active:scale-95"
-            >
-              Volunteer
-              <FiHeart className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Right Image */}
-      <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative  overflow-hidden min-h-[300px]"
-      >
-        <Image
-          src="https://images.unsplash.com/photo-1682786308110-fab1fe5e9446?q=80&w=584&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Helping hands"
-          fill
-          className="object-cover"
-          unoptimized
-        />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-950/40 to-transparent lg:from-teal-950/60 lg:to-transparent" />
-
-        {/* Floating quote */}
-        <div className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md rounded-2xl p-5">
-          <p className="text-cream-50 italic text-sm leading-relaxed">
-            "Together, we can create a future where every community thrives."
-          </p>
-          <div className="text-amber-400 text-xs font-bold mt-2">— Kothowain Team</div>
-        </div>
-      </motion.div>
-    </div>
-  </div>
-</section>
+      {/* Final CTA - Same as Food Split Design */}
+      <SplitSection
+        image="https://images.unsplash.com/photo-1682786308110-fab1fe5e9446?q=80&w=584&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        imageAlt="Helping hands"
+        badgeIcon={FiGift} // Changed to icon badge like food section
+        badgeText="Get involved"
+        title="Be Part of the"
+        highlightText="Change"
+        description="Change begins when people choose to act."
+        buttons={[
+          {
+            text: "Donate Now",
+            href: "#donate",
+            icon: FiArrowRight,
+            variant: "primary",
+          },
+          {
+            text: "Volunteer",
+            href: "#volunteer",
+            icon: FiHeart,
+            variant: "outline",
+          },
+        ]}
+      />
 
       {/* Our Values */}
       <section className="py-[100px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1280px] mx-auto container-px">
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -986,15 +933,13 @@ const AboutPage = () => {
         </div>
       </section>
 
-      
-
       {/* Partners & Networks */}
       <section className="py-[100px] lg:py-[120px] relative overflow-hidden">
         {/* Decorative */}
         <div className="absolute top-20 left-10 w-40 h-40 rounded-full bg-amber-500/5 pointer-events-none" />
         <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-teal-950/5 pointer-events-none" />
 
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
+        <div className="max-w-[1280px] mx-auto container-px relative">
           {/* Section Head */}
           <div className="text-center mb-16">
             <motion.div
@@ -1090,7 +1035,7 @@ const AboutPage = () => {
             <h3 className="font-display text-2xl text-teal-950 font-semibold text-center mb-8">
               Programs & Development Partners
             </h3>
-            <div className="bg-teal-950 rounded-[2rem] p-8 lg:p-10">
+            <div className="bg-teal-950 rounded-[2rem] p-4 md:p-8 lg:p-10">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {programPartners.map((program, index) => (
                   <motion.div
@@ -1112,10 +1057,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-
-
       {/* What We Do - Image Cards */}
-      {/* What We Do - Swiper Slider */}
       <section className="py-[100px] lg:py-[120px] bg-paper relative overflow-hidden">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
           <div className="text-center mb-16">
@@ -1186,7 +1128,7 @@ const AboutPage = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-7">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 lg:p-7">
                     <div className="flex items-center gap-3 mb-3">
                       <h3 className="font-display text-xl lg:text-2xl text-cream-50 font-semibold">
                         {program.title}
@@ -1249,7 +1191,7 @@ const AboutPage = () => {
         <div className="absolute top-10 right-20 w-40 h-40 rounded-full bg-amber-500/10 blur-2xl pointer-events-none" />
         <div className="absolute bottom-10 left-20 w-32 h-32 rounded-full bg-amber-500/5 blur-xl pointer-events-none" />
 
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
+        <div className="max-w-[1280px] mx-auto container-px relative">
           <div className="grid grid-cols-1 lg:grid-cols-[0.6fr_1.4fr] gap-12 items-center">
             {/* Left heading */}
             <motion.div

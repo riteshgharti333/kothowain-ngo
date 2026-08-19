@@ -34,7 +34,7 @@ const Volunteer = () => {
       <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-amber-500/5 pointer-events-none" />
       <div className="absolute bottom-20 left-10 w-28 h-28 rounded-full bg-teal-950/5 pointer-events-none" />
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
+      <div className="max-w-[1280px] mx-auto px-2 sm:px-5 md:px-6 lg:px-10 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left Image */}
           <motion.div
@@ -61,7 +61,7 @@ const Volunteer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="absolute -bottom-6 -right-4 lg:-right-8 bg-amber-500 text-teal-950 p-6 rounded-2xl shadow-[0_16px_40px_-12px_rgba(232,163,23,0.6)] max-w-[200px]"
+              className="absolute -bottom-6 -right-0 lg:-right-8 bg-amber-500 text-teal-950 p-6 rounded-2xl shadow-[0_16px_40px_-12px_rgba(232,163,23,0.6)] max-w-[200px]"
             >
               <div className="font-display text-4xl font-bold leading-none">
                 500+
@@ -77,7 +77,7 @@ const Volunteer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="absolute -top-4 -left-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3"
+              className="absolute -top-4 -left-1 bg-amber-400 rounded-2xl shadow-xl p-4 flex items-center gap-3"
             >
               <div className="w-10 h-10 rounded-xl bg-teal-950 flex items-center justify-center">
                 <FiHeart className="w-5 h-5 text-amber-400" />

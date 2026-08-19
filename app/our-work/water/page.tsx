@@ -25,6 +25,7 @@ import {
 import HeadingWithPaint from "../../components/HeadingWithPaint";
 import PageBanner from "../../components/PageBanner";
 import { useState } from "react";
+import SplitSection from "@/app/components/SplitSection";
 
 /* ================================================================== */
 /* Small reusable bits unique to this page                             */
@@ -278,7 +279,7 @@ const CleanWaterPage = () => {
       {/* ============================================================ */}
       {/* 2. WATERSHED MAP — the journey of water */}
       <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1280px] mx-auto container-px">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             {/* Image Collage */}
             <motion.div
@@ -333,7 +334,7 @@ const CleanWaterPage = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-                className="absolute -top-4 -right-4 bg-amber-500 text-teal-950 rounded-2xl px-4 py-2 shadow-xl rotate-3"
+                className="absolute -top-4 -right-1 bg-amber-500 text-teal-950 rounded-2xl px-4 py-2 shadow-xl rotate-3"
               >
                 <span className="text-xs font-bold flex items-center gap-1.5">
                   <FiDroplet className="w-3.5 h-3.5" />
@@ -393,7 +394,7 @@ const CleanWaterPage = () => {
       {/* 3. CLEAN WATER PROGRAMS — ripple cards                         */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1280px] mx-auto container-px">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -458,7 +459,7 @@ const CleanWaterPage = () => {
         <div className="absolute -top-20 right-0 w-[400px] h-[400px] rounded-full bg-amber-500/5 pointer-events-none" />
         <div className="absolute -bottom-20 left-0 w-[300px] h-[300px] rounded-full bg-teal-400/5 pointer-events-none" />
 
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10 relative">
+        <div className="max-w-[1100px] mx-auto container-px relative">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -515,7 +516,7 @@ const CleanWaterPage = () => {
       {/* 5. SEASONAL FLOW CALENDAR — water level timeline              */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[900px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -576,7 +577,7 @@ const CleanWaterPage = () => {
       {/* 6. WATER CARETAKER SPOTLIGHT                                  */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1000px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -676,7 +677,7 @@ const CleanWaterPage = () => {
       {/* 7. PARTNERSHIP WATERSHED                                      */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1100px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -725,71 +726,31 @@ const CleanWaterPage = () => {
       {/* ============================================================ */}
       {/* 8. WATER CTA — invitation to make a splash                    */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px]">
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden order-1 lg:order-2 min-h-[280px]"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1495647688236-ed6ef40cb28b?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Clean water flowing"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-teal-950/40 to-transparent lg:from-transparent lg:to-teal-950/60" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-teal-950 p-10 lg:p-14 flex flex-col justify-center relative overflow-hidden order-2 lg:order-1"
-          >
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-amber-500/10" />
-            <div className="absolute top-10 right-20 w-20 h-20 rounded-full bg-teal-400/5" />
-
-            <span className="font-mono text-xs tracking-[0.25em] uppercase text-amber-500 font-bold mb-5 inline-flex items-center gap-2">
-              <FiGift className="w-4 h-4" /> Make a splash
-            </span>
-
-            <h2 className="font-display font-semibold text-4xl lg:text-5xl text-cream-50 leading-[1.05] tracking-tight mb-4">
-              Fund a{" "}
-              <span className="text-amber-500 italic font-normal">
-                standpost
-              </span>{" "}
-              for a village
-            </h2>
-
-            <p className="text-cream-50/70 text-lg max-w-[420px] leading-relaxed mb-8">
-              One standpost serves 30 families. A drop in the bucket for you, a
-              lifetime of clean water for them.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="#donate"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-amber-500 text-teal-950 font-semibold text-sm transition-all duration-300 hover:bg-cream-50 hover:-translate-y-0.5 active:scale-95"
-              >
-                Fund a Standpost
-                <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="#volunteer"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border-2 border-cream-50/30 text-cream-50 font-semibold text-sm transition-all duration-300 hover:border-cream-50 hover:bg-cream-50 hover:text-teal-950 hover:-translate-y-0.5 active:scale-95"
-              >
-                Join a Water Committee
-                <FiHeart className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Water CTA - Same split design */}
+      <SplitSection
+        image="https://images.unsplash.com/photo-1495647688236-ed6ef40cb28b?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        imageAlt="Clean water flowing"
+        badgeIcon={FiDroplet}
+        badgeText="Make a splash"
+        title="Fund a"
+        highlightText="standpost"
+        highlightAfter="for a village"
+        description="One standpost serves 30 families. A drop in the bucket for you, a lifetime of clean water for them."
+        buttons={[
+          {
+            text: "Fund a Standpost",
+            href: "#donate",
+            icon: FiArrowRight,
+            variant: "primary",
+          },
+          {
+            text: "Join a Water Committee",
+            href: "#volunteer",
+            icon: FiHeart,
+            variant: "outline",
+          },
+        ]}
+      />
 
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {

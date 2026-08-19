@@ -16,20 +16,28 @@ import {
 } from "react-icons/fi";
 
 const Footer = () => {
+  // Aligned with navbar
   const quickLinks = [
-    { label: "About Us", href: "#about" },
-    { label: "Our Causes", href: "#causes" },
-    { label: "Our Team", href: "#team" },
-    { label: "Volunteer", href: "#volunteer" },
-    { label: "Donate", href: "#donate" },
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Our Impact", href: "/our-impact" },
+    { label: "Stories", href: "/stories" },
   ];
 
-  const programs = [
-    { label: "Food Security", href: "#" },
-    { label: "Water & Sanitation", href: "#" },
-    { label: "Education Support", href: "#" },
-    { label: "Healthcare", href: "#" },
-    { label: "Emergency Relief", href: "#" },
+  // Aligned with Our Work dropdown
+  const ourWorkLinks = [
+    { label: "Education", href: "/our-work/education" },
+    { label: "Food Support", href: "/our-work/food" },
+    { label: "Clean Water", href: "/our-work/water" },
+    { label: "Medical Support", href: "/our-work/medical-support" },
+  ];
+
+  // Aligned with Get Involved dropdown
+  const getInvolvedLinks = [
+    { label: "Volunteer", href: "/volunteer" },
+    { label: "Team", href: "/team" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "Contact", href: "/contact" },
   ];
 
   const socials = [
@@ -51,9 +59,9 @@ const Footer = () => {
       <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-amber-500/5 pointer-events-none" />
       <div className="absolute bottom-0 -left-20 w-64 h-64 rounded-full bg-cream-50/3 pointer-events-none" />
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
-        {/* CTA Banner - fully visible */}
-        <div className=" bg-amber-500 rounded-[2rem] p-8 lg:p-10 mb-16 relative z-10 shadow-2xl">
+      <div className="max-w-[1280px] mx-auto px-2 sm:px-5 md:px-6 lg:px-10 relative">
+        {/* CTA Banner */}
+        <div className="bg-amber-500 rounded-[2rem] p-8 lg:p-10 mb-16 relative z-10 shadow-2xl">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="font-display text-2xl lg:text-3xl text-teal-950 font-semibold mb-2">
@@ -64,7 +72,7 @@ const Footer = () => {
               </p>
             </div>
             <Link
-              href="#donate"
+              href="/donate"
               className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-teal-950 text-amber-400 font-semibold text-sm transition-all duration-300 hover:bg-ink hover:text-amber-400 hover:-translate-y-0.5 active:scale-95 whitespace-nowrap"
             >
               Donate Now
@@ -73,18 +81,22 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_0.8fr_1fr] gap-10 lg:gap-14 pb-14 border-b border-cream-50/10">
+        {/* Main Footer Grid - Now 4 columns aligned with navbar */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_0.8fr_1fr] gap-10 lg:gap-14 pb-14 border-b border-cream-50/10">
           {/* Brand Column */}
           <div>
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center">
-                <span className="font-display font-bold text-teal-950 text-lg">
-                  K
-                </span>
+              <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/logo.png"
+                  alt="Kothowain"
+                  width={60}
+                  height={60}
+                  className="object-contain"
+                />
               </div>
-              <span className="font-display font-bold text-xl text-cream-50">
+              <span className="font-display font-bold text-2xl text-cream-50">
                 Kothowain
               </span>
             </Link>
@@ -106,7 +118,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links - Main pages */}
           <div>
             <h4 className="text-[13px] uppercase tracking-[0.08em] text-amber-400 mb-5 font-bold">
               Quick Links
@@ -114,44 +126,62 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="group flex items-center gap-2 text-sm text-cream-50/60 hover:text-amber-400 transition-colors duration-300"
                   >
                     <span className="w-0 group-hover:w-3 h-px bg-amber-400 transition-all duration-300" />
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Programs */}
+          {/* Our Work */}
           <div>
             <h4 className="text-[13px] uppercase tracking-[0.08em] text-amber-400 mb-5 font-bold">
-              Our Programs
+              Our Work
             </h4>
             <ul className="space-y-3">
-              {programs.map((program) => (
-                <li key={program.label}>
-                  <a
-                    href={program.href}
+              {ourWorkLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
                     className="group flex items-center gap-2 text-sm text-cream-50/60 hover:text-amber-400 transition-colors duration-300"
                   >
                     <span className="w-0 group-hover:w-3 h-px bg-amber-400 transition-all duration-300" />
-                    {program.label}
-                  </a>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Get Involved + Contact */}
           <div>
+            <h4 className="text-[13px] uppercase tracking-[0.08em] text-amber-400 mb-5 font-bold">
+              Get Involved
+            </h4>
+            <ul className="space-y-3 mb-6">
+              {getInvolvedLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="group flex items-center gap-2 text-sm text-cream-50/60 hover:text-amber-400 transition-colors duration-300"
+                  >
+                    <span className="w-0 group-hover:w-3 h-px bg-amber-400 transition-all duration-300" />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Contact Info */}
             <h4 className="text-[13px] uppercase tracking-[0.08em] text-amber-400 mb-5 font-bold">
               Get in Touch
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-cream-50/60">
                 <FiPhone className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
                 <span>+880 1556 561 400</span>

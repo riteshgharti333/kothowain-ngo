@@ -29,6 +29,7 @@ import {
 import HeadingWithPaint from "../components/HeadingWithPaint";
 import PageBanner from "../components/PageBanner";
 import { useState } from "react";
+import SplitSection from "../components/SplitSection";
 
 /* ================================================================== */
 /* Story-specific reusable components                                 */
@@ -47,7 +48,9 @@ const ChapterDivider = ({ chapter = "01" }: { chapter?: string }) => (
 
 // Story bookmark
 const StoryBookmark = ({ color = "bg-amber-500" }: { color?: string }) => (
-  <div className={`absolute -top-1 -right-2 w-8 h-12 ${color} shadow-lg rounded-b-lg`}>
+  <div
+    className={`absolute -top-1 -right-2 w-8 h-12 ${color} shadow-lg rounded-b-lg`}
+  >
     <div className="absolute bottom-0 left-0 right-0 h-4 bg-white/20" />
   </div>
 );
@@ -64,7 +67,13 @@ const QuoteMark = ({ flip = false }: { flip?: boolean }) => (
 );
 
 // Story progress indicator
-const StoryProgress = ({ current = 1, total = 6 }: { current?: number; total?: number }) => (
+const StoryProgress = ({
+  current = 1,
+  total = 6,
+}: {
+  current?: number;
+  total?: number;
+}) => (
   <div className="flex items-center gap-2">
     {Array.from({ length: total }).map((_, i) => (
       <motion.span
@@ -304,7 +313,7 @@ const StoryPage = () => {
       {/* 2. FEATURED STORY — chapter book style                        */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1100px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -327,7 +336,7 @@ const StoryPage = () => {
             className="relative bg-white rounded-[2rem] shadow-[0_25px_60px_-25px_rgba(21,36,32,0.3)] overflow-hidden"
           >
             <StoryBookmark />
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Image side */}
               <div className="relative min-h-[400px] lg:min-h-[600px]">
@@ -339,7 +348,7 @@ const StoryPage = () => {
                   unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-950/70 via-transparent to-transparent" />
-                
+
                 {/* Story meta */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
                   <div className="flex items-center gap-3 mb-4">
@@ -366,7 +375,7 @@ const StoryPage = () => {
                 <p className="text-amber-500 text-sm font-bold mb-4">
                   By {featuredStory.author}
                 </p>
-                
+
                 <p className="text-ink-soft text-sm leading-relaxed mb-6">
                   {featuredStory.excerpt}
                 </p>
@@ -409,7 +418,7 @@ const StoryPage = () => {
       {/* 3. ALL STORIES — library shelf                               */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1280px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -449,9 +458,11 @@ const StoryPage = () => {
                         unoptimized
                       />
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent to-teal-950/20" />
-                      
+
                       {/* Program badge */}
-                      <span className={`absolute top-4 left-4 ${story.color} text-cream-50 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-2`}>
+                      <span
+                        className={`absolute top-4 left-4 ${story.color} text-cream-50 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-2`}
+                      >
                         <story.icon className="w-3 h-3" />
                         {story.program}
                       </span>
@@ -504,7 +515,10 @@ const StoryPage = () => {
                           Read Full Story
                           <FiArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </button>
-                        <StoryProgress current={story.id} total={stories.length} />
+                        <StoryProgress
+                          current={story.id}
+                          total={stories.length}
+                        />
                       </div>
                     </div>
                   </div>
@@ -578,10 +592,13 @@ const StoryPage = () => {
                     <p className="text-amber-500 text-sm font-bold mb-6">
                       By {featuredStory.author} • {featuredStory.location}
                     </p>
-                    
+
                     <div className="prose max-w-none">
                       {featuredStory.story.split("\n\n").map((paragraph, i) => (
-                        <p key={i} className="text-ink-soft text-sm leading-relaxed mb-4">
+                        <p
+                          key={i}
+                          className="text-ink-soft text-sm leading-relaxed mb-4"
+                        >
                           {paragraph}
                         </p>
                       ))}
@@ -613,12 +630,16 @@ const StoryPage = () => {
                           onClick={() => setActiveStory(null)}
                           className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors"
                         >
-                          <span className="text-teal-950 text-xl font-bold">×</span>
+                          <span className="text-teal-950 text-xl font-bold">
+                            ×
+                          </span>
                         </button>
                       </div>
                       <div className="p-8 lg:p-10">
                         <div className="flex items-center gap-3 mb-4">
-                          <span className={`${story.color} text-cream-50 text-xs font-bold px-3 py-1 rounded-full`}>
+                          <span
+                            className={`${story.color} text-cream-50 text-xs font-bold px-3 py-1 rounded-full`}
+                          >
                             {story.program}
                           </span>
                           <span className="text-xs text-ink-soft">
@@ -631,10 +652,13 @@ const StoryPage = () => {
                         <p className="text-amber-500 text-sm font-bold mb-6">
                           By {story.author} • {story.location}
                         </p>
-                        
+
                         <div className="prose max-w-none">
                           {story.story.split("\n\n").map((paragraph, i) => (
-                            <p key={i} className="text-ink-soft text-sm leading-relaxed mb-4">
+                            <p
+                              key={i}
+                              className="text-ink-soft text-sm leading-relaxed mb-4"
+                            >
                               {paragraph}
                             </p>
                           ))}
@@ -658,68 +682,30 @@ const StoryPage = () => {
       {/* ============================================================ */}
       {/* 5. SHARE & CONNECT CTA                                        */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px]">
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden order-1 lg:order-2 min-h-[280px]"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=900&fit=crop&q=80"
-              alt="Community gathering"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-teal-950/40 to-transparent lg:from-transparent lg:to-teal-950/60" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-teal-950 p-10 lg:p-14 flex flex-col justify-center relative overflow-hidden order-2 lg:order-1"
-          >
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-amber-500/10" />
-            <div className="absolute top-10 right-20 w-20 h-20 rounded-full bg-teal-400/5" />
-
-            <span className="font-mono text-xs tracking-[0.25em] uppercase text-amber-500 font-bold mb-5 inline-flex items-center gap-2">
-              <FiShare2 className="w-4 h-4" /> Share the stories
-            </span>
-
-            <h2 className="font-display font-semibold text-4xl lg:text-5xl text-cream-50 leading-[1.05] tracking-tight mb-4">
-              Someone you know{" "}
-              <span className="text-amber-500 italic font-normal">needs to read this</span>
-            </h2>
-
-            <p className="text-cream-50/70 text-lg max-w-[420px] leading-relaxed mb-8">
-              Share these stories with someone who believes change is
-              possible. Or better yet, come write the next chapter with us.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="#volunteer"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-amber-500 text-teal-950 font-semibold text-sm transition-all duration-300 hover:bg-cream-50 hover:-translate-y-0.5 active:scale-95"
-              >
-                Volunteer With Us
-                <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="#donate"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border-2 border-cream-50/30 text-cream-50 font-semibold text-sm transition-all duration-300 hover:border-cream-50 hover:bg-cream-50 hover:text-teal-950 hover:-translate-y-0.5 active:scale-95"
-              >
-                Support These Stories
-                <FiHeart className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Share Stories CTA - Same split design */}
+      <SplitSection
+        image="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=900&fit=crop&q=80"
+        imageAlt="Community gathering"
+        badgeIcon={FiShare2} // Share icon
+        badgeText="Share the stories"
+        title="Someone you know"
+        highlightText="needs to read this"
+        description="Share these stories with someone who believes change is possible. Or better yet, come write the next chapter with us."
+        buttons={[
+          {
+            text: "Volunteer With Us",
+            href: "#volunteer",
+            icon: FiArrowRight,
+            variant: "primary",
+          },
+          {
+            text: "Support These Stories",
+            href: "#donate",
+            icon: FiHeart,
+            variant: "outline",
+          },
+        ]}
+      />
 
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@tailwind utilities;
 
 @theme {
   /* Primary Colors */
@@ -27,7 +28,7 @@
 
   /* Fonts */
   --font-display: "Fraunces", serif;
-   --font-body: "Poppins", sans-serif;
+  --font-body: "Poppins", sans-serif;
   --font-mono: "Space Mono", monospace;
 }
 
@@ -58,4 +59,8 @@ body {
 }
 .nav-link:hover::after {
   width: 100%;
+}
+
+@utility container-px {
+  @apply px-2 sm:px-5 md:px-6 lg:px-10;
 }

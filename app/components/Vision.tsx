@@ -72,7 +72,7 @@ const Vision = () => {
       <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full border-[40px] border-amber-500/5 pointer-events-none" />
       <div className="absolute top-10 left-10 w-24 h-24 rounded-full bg-amber-500/5 pointer-events-none" />
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
+      <div className="max-w-[1280px] mx-auto px-2 sm:px-5 md:px-6 lg:px-10 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left Stats Grid */}
           <motion.div
@@ -178,7 +178,7 @@ const Vision = () => {
               className="mb-8"
             >
               <HeadingWithPaint
-                text="Development that starts dignity, not dependency"
+                text="Building dignity, not dependency"
                 className="text-left"
               />
             </motion.div>

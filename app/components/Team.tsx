@@ -56,7 +56,7 @@ const Team = () => {
       <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-amber-500/5 pointer-events-none" />
       <div className="absolute bottom-20 right-10 w-24 h-24 rounded-full bg-teal-950/5 pointer-events-none" />
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
+      <div className="max-w-[1280px] mx-auto px-2 sm:px-5 md:px-6 lg:px-10 relative">
         {/* Section Head */}
         <div className="text-center max-w-[640px] mx-auto mb-20">
           <motion.div

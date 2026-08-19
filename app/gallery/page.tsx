@@ -33,6 +33,7 @@ import {
 import HeadingWithPaint from "../components/HeadingWithPaint";
 import PageBanner from "../components/PageBanner";
 import { useState, useEffect, useCallback } from "react";
+import SplitSection from "../components/SplitSection";
 
 /* ================================================================== */
 /* Types                                                              */
@@ -86,13 +87,21 @@ interface PexelsResponse {
 /* ================================================================== */
 
 // Pinterest-style masonry card with dynamic sizing
-const MasonryCard = ({ item, index, onOpen }: { item: GalleryItem; index: number; onOpen: (id: string) => void }) => {
+const MasonryCard = ({
+  item,
+  index,
+  onOpen,
+}: {
+  item: GalleryItem;
+  index: number;
+  onOpen: (id: string) => void;
+}) => {
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
-  
+
   // Dynamic aspect ratio based on actual image dimensions
   const aspectRatio = item.width / item.height;
-  
+
   return (
     <motion.div
       layout
@@ -106,7 +115,7 @@ const MasonryCard = ({ item, index, onOpen }: { item: GalleryItem; index: number
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Image container with natural aspect ratio */}
-      <div 
+      <div
         className="relative w-full overflow-hidden"
         style={{ aspectRatio: `${item.width} / ${item.height}` }}
       >
@@ -120,30 +129,30 @@ const MasonryCard = ({ item, index, onOpen }: { item: GalleryItem; index: number
           alt={item.title}
           fill
           className={`object-cover transition-all duration-700 ${
-            isHovered ? 'scale-110' : 'scale-100'
-          } ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            isHovered ? "scale-110" : "scale-100"
+          } ${imageLoaded ? "opacity-100" : "opacity-0"}`}
           unoptimized
           onLoad={() => setImageLoaded(true)}
         />
-        
+
         {/* Gradient overlay on hover */}
-        <div 
+        <div
           className={`absolute inset-0 bg-gradient-to-t from-teal-950/90 via-teal-950/30 to-transparent transition-opacity duration-300 ${
-            isHovered ? 'opacity-100' : 'opacity-0'
+            isHovered ? "opacity-100" : "opacity-0"
           }`}
         />
-        
+
         {/* Category badge - always visible */}
         <span className="absolute top-3 left-3 bg-amber-500 text-teal-950 text-[10px] font-bold px-2.5 py-1 rounded-full">
           {item.category}
         </span>
-        
+
         {/* Save button (Pinterest style) */}
         <button
           className={`absolute top-3 right-3 px-3 py-2 rounded-full font-bold text-sm transition-all duration-300 ${
-            isHovered 
-              ? 'bg-amber-500 text-teal-950 opacity-100 translate-y-0' 
-              : 'bg-cream-50/20 backdrop-blur-sm text-cream-50 opacity-0 -translate-y-2'
+            isHovered
+              ? "bg-amber-500 text-teal-950 opacity-100 translate-y-0"
+              : "bg-cream-50/20 backdrop-blur-sm text-cream-50 opacity-0 -translate-y-2"
           }`}
           onClick={(e) => {
             e.stopPropagation();
@@ -152,11 +161,13 @@ const MasonryCard = ({ item, index, onOpen }: { item: GalleryItem; index: number
         >
           Save
         </button>
-        
+
         {/* Bottom info on hover */}
-        <div 
+        <div
           className={`absolute bottom-0 left-0 right-0 p-4 transition-all duration-300 ${
-            isHovered ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+            isHovered
+              ? "translate-y-0 opacity-100"
+              : "translate-y-full opacity-0"
           }`}
         >
           <h3 className="text-cream-50 font-display font-semibold text-sm mb-1 line-clamp-2">
@@ -171,11 +182,11 @@ const MasonryCard = ({ item, index, onOpen }: { item: GalleryItem; index: number
             </span>
           </div>
         </div>
-        
+
         {/* Expand icon */}
-        <div 
+        <div
           className={`absolute bottom-3 right-3 w-10 h-10 rounded-full bg-cream-50/20 backdrop-blur-sm flex items-center justify-center transition-all duration-300 ${
-            isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+            isHovered ? "opacity-100 scale-100" : "opacity-0 scale-50"
           }`}
         >
           <FiMaximize className="w-4 h-4 text-cream-50" />
@@ -186,7 +197,17 @@ const MasonryCard = ({ item, index, onOpen }: { item: GalleryItem; index: number
 };
 
 // Filter chip
-const FilterChip = ({ label, active, onClick, icon: Icon }: { label: string; active: boolean; onClick: () => void; icon: React.ComponentType<{ className: string }> }) => (
+const FilterChip = ({
+  label,
+  active,
+  onClick,
+  icon: Icon,
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+  icon: React.ComponentType<{ className: string }>;
+}) => (
   <motion.button
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
@@ -206,7 +227,8 @@ const FilterChip = ({ label, active, onClick, icon: Icon }: { label: string; act
 /* API Configuration                                                  */
 /* ================================================================== */
 
-const PEXELS_API_KEY = process.env.NEXT_PUBLIC_PEXELS_API_KEY || "YOUR_PEXELS_API_KEY";
+const PEXELS_API_KEY =
+  process.env.NEXT_PUBLIC_PEXELS_API_KEY || "YOUR_PEXELS_API_KEY";
 const PEXELS_API_URL = "https://api.pexels.com/v1/search";
 
 // Category mappings with search queries - no orientation constraint
@@ -246,76 +268,108 @@ const GalleryPage = () => {
   /* API Functions                                                     */
   /* ---------------------------------------------------------------- */
 
-  const fetchGalleryPhotos = useCallback(async (category: string = "all", pageNum: number = 1) => {
-    try {
-      setLoading(true);
-      setError(null);
+  const fetchGalleryPhotos = useCallback(
+    async (category: string = "all", pageNum: number = 1) => {
+      try {
+        setLoading(true);
+        setError(null);
 
-      let query = "bangladesh village community development";
-      
-      if (category !== "all" && CATEGORY_QUERIES[category as keyof typeof CATEGORY_QUERIES]) {
-        query = CATEGORY_QUERIES[category as keyof typeof CATEGORY_QUERIES];
+        let query = "bangladesh village community development";
+
+        if (
+          category !== "all" &&
+          CATEGORY_QUERIES[category as keyof typeof CATEGORY_QUERIES]
+        ) {
+          query = CATEGORY_QUERIES[category as keyof typeof CATEGORY_QUERIES];
+        }
+
+        // REMOVED orientation constraint to get varied image sizes
+        // Using larger per_page to get more variety
+        const url = `${PEXELS_API_URL}?query=${encodeURIComponent(query)}&per_page=24&page=${pageNum}&size=medium`;
+
+        const response = await fetch(url, {
+          headers: {
+            Authorization: PEXELS_API_KEY,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            `API Error: ${response.status} ${response.statusText}`,
+          );
+        }
+
+        const data: PexelsResponse = await response.json();
+
+        // Transform Pexels photos to our GalleryItem format
+        const transformedItems: GalleryItem[] = data.photos.map((photo) => {
+          // Generate fake location and date based on photo ID
+          const locations = [
+            "Ruma, Bandarban",
+            "Thanchi, Bandarban",
+            "Belaichori, Rangamati",
+            "Alikadam, Bandarban",
+            "Jurachari, Rangamati",
+          ];
+          const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ];
+          const years = ["2023", "2024"];
+
+          return {
+            id: photo.id.toString(),
+            url: photo.src.large || photo.src.medium || photo.src.original,
+            title: photo.alt || "Kothowain Project Photo",
+            location: locations[photo.id % locations.length],
+            date: `${months[photo.id % months.length]} ${years[photo.id % years.length]}`,
+            photographer: photo.photographer,
+            description:
+              photo.alt ||
+              "A moment captured from Kothowain's work in the Chittagong Hill Tracts.",
+            category:
+              category === "all"
+                ? galleryCategories[(photo.id % 5) + 1].id
+                : category,
+            width: photo.width,
+            height: photo.height,
+            color: photo.avg_color,
+          };
+        });
+
+        if (pageNum === 1) {
+          setGalleryItems(transformedItems);
+        } else {
+          setGalleryItems((prev) => [...prev, ...transformedItems]);
+        }
+
+        setHasMore(data.next_page ? true : false);
+        setPage(data.page);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to fetch images");
+        console.error("Error fetching gallery photos:", err);
+
+        // Fallback to hardcoded images if API fails
+        if (pageNum === 1) {
+          setGalleryItems(getFallbackImages(category));
+        }
+      } finally {
+        setLoading(false);
+        setLoadingMore(false);
       }
-
-      // REMOVED orientation constraint to get varied image sizes
-      // Using larger per_page to get more variety
-      const url = `${PEXELS_API_URL}?query=${encodeURIComponent(query)}&per_page=24&page=${pageNum}&size=medium`;
-
-      const response = await fetch(url, {
-        headers: {
-          Authorization: PEXELS_API_KEY,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`API Error: ${response.status} ${response.statusText}`);
-      }
-
-      const data: PexelsResponse = await response.json();
-
-      // Transform Pexels photos to our GalleryItem format
-      const transformedItems: GalleryItem[] = data.photos.map((photo) => {
-        // Generate fake location and date based on photo ID
-        const locations = ["Ruma, Bandarban", "Thanchi, Bandarban", "Belaichori, Rangamati", "Alikadam, Bandarban", "Jurachari, Rangamati"];
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        const years = ["2023", "2024"];
-        
-        return {
-          id: photo.id.toString(),
-          url: photo.src.large || photo.src.medium || photo.src.original,
-          title: photo.alt || "Kothowain Project Photo",
-          location: locations[photo.id % locations.length],
-          date: `${months[photo.id % months.length]} ${years[photo.id % years.length]}`,
-          photographer: photo.photographer,
-          description: photo.alt || "A moment captured from Kothowain's work in the Chittagong Hill Tracts.",
-          category: category === "all" ? galleryCategories[(photo.id % 5) + 1].id : category,
-          width: photo.width,
-          height: photo.height,
-          color: photo.avg_color,
-        };
-      });
-
-      if (pageNum === 1) {
-        setGalleryItems(transformedItems);
-      } else {
-        setGalleryItems(prev => [...prev, ...transformedItems]);
-      }
-
-      setHasMore(data.next_page ? true : false);
-      setPage(data.page);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to fetch images");
-      console.error("Error fetching gallery photos:", err);
-      
-      // Fallback to hardcoded images if API fails
-      if (pageNum === 1) {
-        setGalleryItems(getFallbackImages(category));
-      }
-    } finally {
-      setLoading(false);
-      setLoadingMore(false);
-    }
-  }, []);
+    },
+    [],
+  );
 
   const getFallbackImages = (category: string): GalleryItem[] => {
     // Fallback images with varied aspect ratios
@@ -327,7 +381,8 @@ const GalleryPage = () => {
         location: "Ruma, Bandarban",
         date: "March 2024",
         photographer: "Kothowain Team",
-        description: "Children gather for morning lessons at the Ruma Learning Center.",
+        description:
+          "Children gather for morning lessons at the Ruma Learning Center.",
         category: "education",
         width: 800,
         height: 600, // Landscape
@@ -339,7 +394,8 @@ const GalleryPage = () => {
         location: "Thanchi, Bandarban",
         date: "February 2024",
         photographer: "Kothowain Team",
-        description: "Community members collect clean water from a new standpost.",
+        description:
+          "Community members collect clean water from a new standpost.",
         category: "water",
         width: 600,
         height: 800, // Portrait
@@ -387,7 +443,8 @@ const GalleryPage = () => {
         location: "Thanchi, Bandarban",
         date: "October 2023",
         photographer: "Kothowain Team",
-        description: "A young student arrives for her first day at a learning center.",
+        description:
+          "A young student arrives for her first day at a learning center.",
         category: "education",
         width: 600,
         height: 600, // Square
@@ -411,7 +468,8 @@ const GalleryPage = () => {
         location: "Alikadam, Bandarban",
         date: "August 2023",
         photographer: "Kothowain Team",
-        description: "A mobile learning center brings education to remote villages.",
+        description:
+          "A mobile learning center brings education to remote villages.",
         category: "education",
         width: 900,
         height: 600, // Wide landscape
@@ -421,7 +479,7 @@ const GalleryPage = () => {
     if (category === "all") {
       return fallbackImages;
     }
-    return fallbackImages.filter(img => img.category === category);
+    return fallbackImages.filter((img) => img.category === category);
   };
 
   const loadMore = () => {
@@ -443,12 +501,12 @@ const GalleryPage = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!lightboxOpen) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') navigateLightbox('next');
-      if (e.key === 'ArrowLeft') navigateLightbox('prev');
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") navigateLightbox("next");
+      if (e.key === "ArrowLeft") navigateLightbox("prev");
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [lightboxOpen, selectedImage, galleryItems]);
 
   /* ---------------------------------------------------------------- */
@@ -465,21 +523,25 @@ const GalleryPage = () => {
     setSelectedImage(null);
   };
 
-  const navigateLightbox = (direction: 'next' | 'prev') => {
+  const navigateLightbox = (direction: "next" | "prev") => {
     if (selectedImage === null) return;
-    const currentIndex = galleryItems.findIndex(item => item.id === selectedImage);
-    if (direction === 'next') {
+    const currentIndex = galleryItems.findIndex(
+      (item) => item.id === selectedImage,
+    );
+    if (direction === "next") {
       const nextIndex = (currentIndex + 1) % galleryItems.length;
       setSelectedImage(galleryItems[nextIndex].id);
     } else {
-      const prevIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      const prevIndex =
+        (currentIndex - 1 + galleryItems.length) % galleryItems.length;
       setSelectedImage(galleryItems[prevIndex].id);
     }
   };
 
-  const selectedImageData = selectedImage !== null 
-    ? galleryItems.find(item => item.id === selectedImage) 
-    : null;
+  const selectedImageData =
+    selectedImage !== null
+      ? galleryItems.find((item) => item.id === selectedImage)
+      : null;
 
   /* ---------------------------------------------------------------- */
   /* Render                                                            */
@@ -506,7 +568,7 @@ const GalleryPage = () => {
       {/* ============================================================ */}
       {galleryItems.length > 0 && !loading && (
         <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-          <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
+          <div className="max-w-[1000px] mx-auto container-px">
             <div className="text-center mb-12">
               <div className="flex items-center justify-center gap-3 mb-6">
                 <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -538,7 +600,7 @@ const GalleryPage = () => {
                   unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-950/80 via-transparent to-transparent" />
-                
+
                 {/* Photo info */}
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <div className="flex items-center gap-3 mb-3">
@@ -546,20 +608,21 @@ const GalleryPage = () => {
                       Featured
                     </span>
                     <span className="text-cream-50/70 text-xs flex items-center gap-1">
-                      <FiMapPin className="w-3 h-3" /> {galleryItems[0].location}
+                      <FiMapPin className="w-3 h-3" />{" "}
+                      {galleryItems[0].location}
                     </span>
                     <span className="text-cream-50/70 text-xs flex items-center gap-1">
                       <FiCalendar className="w-3 h-3" /> {galleryItems[0].date}
                     </span>
                   </div>
-                  <h2 className="font-display text-2xl lg:text-3xl text-cream-50 font-semibold mb-2">
+                  <h2 className="font-display text-2xl lg:text-3xl text-cream-50 font-semibold mb-2 line-clamp-2">
                     {galleryItems[0].title}
                   </h2>
                   <p className="text-cream-50/70 text-sm max-w-[500px]">
                     {galleryItems[0].description}
                   </p>
                 </div>
-                
+
                 {/* Expand icon */}
                 <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-cream-50/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <FiMaximize className="w-5 h-5 text-cream-50" />
@@ -574,7 +637,7 @@ const GalleryPage = () => {
       {/* 3. PINTEREST-STYLE MASONRY GRID                               */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1400px] mx-auto container-px">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -627,7 +690,7 @@ const GalleryPage = () => {
 
           {/* Masonry grid with CSS columns */}
           {!loading && galleryItems.length > 0 && (
-            <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4">
+            <div className="columns-2 sm:columns-2 lg:columns-3 xl:columns-4 gap-4">
               {galleryItems.map((item, index) => (
                 <MasonryCard
                   key={item.id}
@@ -666,69 +729,30 @@ const GalleryPage = () => {
 
       {/* ============================================================ */}
       {/* 4. SHARE YOUR PHOTOS CTA                                      */}
-      {/* ============================================================ */}
-      <section className="relative overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px]">
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden order-1 lg:order-2 min-h-[280px]"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?w=800&h=900&fit=crop&q=80"
-              alt="Photography"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-teal-950/40 to-transparent lg:from-transparent lg:to-teal-950/60" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-teal-950 p-10 lg:p-14 flex flex-col justify-center relative overflow-hidden order-2 lg:order-1"
-          >
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-amber-500/10" />
-            <div className="absolute top-10 right-20 w-20 h-20 rounded-full bg-teal-400/5" />
-
-            <span className="font-mono text-xs tracking-[0.25em] uppercase text-amber-500 font-bold mb-5 inline-flex items-center gap-2">
-              <FiCamera className="w-4 h-4" /> Share your perspective
-            </span>
-
-            <h2 className="font-display font-semibold text-4xl lg:text-5xl text-cream-50 leading-[1.05] tracking-tight mb-4">
-              Got photos{" "}
-              <span className="text-amber-500 italic font-normal">from the hills?</span>
-            </h2>
-
-            <p className="text-cream-50/70 text-lg max-w-[420px] leading-relaxed mb-8">
-              If you've volunteered with us or visited our project sites,
-              we'd love to feature your photographs in our gallery.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-amber-500 text-teal-950 font-semibold text-sm transition-all duration-300 hover:bg-cream-50 hover:-translate-y-0.5 active:scale-95"
-              >
-                Submit Photos
-                <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/stories"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border-2 border-cream-50/30 text-cream-50 font-semibold text-sm transition-all duration-300 hover:border-cream-50 hover:bg-cream-50 hover:text-teal-950 hover:-translate-y-0.5 active:scale-95"
-              >
-                Read Stories
-                <FiHeart className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Photography CTA - Same split design */}
+      <SplitSection
+        image="https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?w=800&h=900&fit=crop&q=80"
+        imageAlt="Photography"
+        badgeIcon={FiCamera} // Camera icon
+        badgeText="Share your perspective"
+        title="Got photos"
+        highlightText="from the hills?"
+        description="If you've volunteered with us or visited our project sites, we'd love to feature your photographs in our gallery."
+        buttons={[
+          {
+            text: "Submit Photos",
+            href: "/contact",
+            icon: FiArrowRight,
+            variant: "primary",
+          },
+          {
+            text: "Read Stories",
+            href: "/stories",
+            icon: FiHeart,
+            variant: "outline",
+          },
+        ]}
+      />
 
       {/* ============================================================ */}
       {/* 5. LIGHTBOX MODAL                                             */}
@@ -759,13 +783,13 @@ const GalleryPage = () => {
 
               {/* Navigation buttons */}
               <button
-                onClick={() => navigateLightbox('prev')}
+                onClick={() => navigateLightbox("prev")}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-teal-950/80 backdrop-blur-sm flex items-center justify-center hover:bg-teal-950 transition-colors"
               >
                 <FiChevronLeft className="w-6 h-6 text-cream-50" />
               </button>
               <button
-                onClick={() => navigateLightbox('next')}
+                onClick={() => navigateLightbox("next")}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-teal-950/80 backdrop-blur-sm flex items-center justify-center hover:bg-teal-950 transition-colors"
               >
                 <FiChevronRight className="w-6 h-6 text-cream-50" />

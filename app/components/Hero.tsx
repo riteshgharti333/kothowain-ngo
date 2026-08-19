@@ -5,58 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { FiArrowRight, FiPlay } from "react-icons/fi";
-
-// Counter component - separate to avoid re-rendering issues
-const Counter = ({
-  value,
-  suffix,
-  start,
-}: {
-  value: number;
-  suffix: string;
-  start: boolean;
-}) => {
-  const [count, setCount] = useState(0);
-  const animationRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    if (!start) return;
-
-    // Reset count
-    setCount(0);
-
-    const duration = 2000;
-    const startTime = performance.now();
-
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4);
-      setCount(Math.floor(eased * value));
-
-      if (progress < 1) {
-        animationRef.current = requestAnimationFrame(animate);
-      } else {
-        setCount(value);
-      }
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [start, value]);
-
-  return (
-    <span>
-      {count.toLocaleString()}
-      <span className="text-amber-500">{suffix}</span>
-    </span>
-  );
-};
+import Counter from "./Counter";
 
 const Hero = () => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -122,18 +71,21 @@ const Hero = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Left fade - blends into cream */}
-        <div className="absolute inset-0 bg-gradient-to-r from-cream-50 via-cream-50/60 via-10% to-transparent via-20%" />
+        {/* Left fade - blends into cream (Desktop only) */}
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-cream-50 via-cream-50/60 via-10% to-transparent via-20%" />
+
+        {/* Mobile overlay - medium intensity */}
+        <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-cream-50/80 via-cream-50/65 to-cream-50/80" />
 
         {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-cream-50/90 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-cream-50/80 to-transparent" />
 
         {/* Top fade */}
-        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-cream-50/90 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-cream-50/80 to-transparent" />
       </div>
 
       {/* Left Content */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-10 lg:pb-15 lg:pt-30 w-full">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-2 sm:px-5 md:px-6 lg:px-10 lg:pb-15 lg:pt-30 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center min-h-screen">
           <div className="py-32 lg:py-0">
             {/* Heading */}
@@ -223,7 +175,9 @@ const Hero = () => {
                     <Counter
                       value={stat.value}
                       suffix={stat.suffix}
-                      start={isStatsInView}
+                      className="font-display text-2xl lg:text-4xl font-bold text-teal-950"
+                      suffixClassName="text-amber-500"
+                      startOnView={true}
                     />
                   </div>
 

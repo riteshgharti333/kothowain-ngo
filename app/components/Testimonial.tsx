@@ -51,7 +51,7 @@ const Testimonial = () => {
       <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-amber-500/5 pointer-events-none" />
       <div className="absolute bottom-20 left-10 w-28 h-28 rounded-full bg-cream-50/5 pointer-events-none" />
 
-      <div className="max-w-[1000px] mx-auto px-6 lg:px-10 relative">
+      <div className="max-w-[1000px] mx-auto px-2 sm:px-5 md:px-6 lg:px-10 relative">
         {/* Simple Centered Swiper */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -123,16 +123,16 @@ const Testimonial = () => {
             ))}
           </Swiper>
 
-          {/* Arrows - positioned sides */}
+          {/* Arrows - positioned sides (hidden on mobile/tablet) */}
           <button
             onClick={() => swiperRef.current?.swiper?.slidePrev()}
-            className="absolute top-1/2 -translate-y-1/2 left-0 z-10 w-12 h-12 rounded-full border border-cream-50/20 flex items-center justify-center text-cream-50 hover:bg-amber-500 hover:text-teal-950 hover:border-amber-500 transition-all duration-300"
+            className="hidden lg:flex absolute top-1/2 -translate-y-1/2 left-0 z-10 w-12 h-12 rounded-full border border-cream-50/20 items-center justify-center text-cream-50 hover:bg-amber-500 hover:text-teal-950 hover:border-amber-500 transition-all duration-300"
           >
             <FiChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={() => swiperRef.current?.swiper?.slideNext()}
-            className="absolute top-1/2 -translate-y-1/2 right-0 z-10 w-12 h-12 rounded-full border border-cream-50/20 flex items-center justify-center text-cream-50 hover:bg-amber-500 hover:text-teal-950 hover:border-amber-500 transition-all duration-300"
+            className="hidden lg:flex absolute top-1/2 -translate-y-1/2 right-0 z-10 w-12 h-12 rounded-full border border-cream-50/20 items-center justify-center text-cream-50 hover:bg-amber-500 hover:text-teal-950 hover:border-amber-500 transition-all duration-300"
           >
             <FiChevronRight className="w-6 h-6" />
           </button>

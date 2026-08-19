@@ -341,7 +341,7 @@ const DonatePage = () => {
 
      {/* 2. IMPACT STATS — trust indicators */}
 <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-  <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+  <div className="max-w-[1100px] mx-auto container-px">
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {impactStats.map((stat, index) => (
         <motion.div
@@ -419,7 +419,7 @@ const DonatePage = () => {
       {/* 3. DONATION FORM + IMPACT AREAS                              */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1200px] mx-auto container-px">
           <div className="grid grid-cols-1">
             {/* Donation Form Component */}
             <motion.div
@@ -514,7 +514,7 @@ const DonatePage = () => {
     {/* 4. IMPACT METERS — where money goes */}
 <section className="py-[90px] lg:py-[120px] bg-teal-950 relative overflow-hidden">
   <div className="absolute -top-20 right-0 w-[400px] h-[400px] rounded-full bg-amber-500/5 pointer-events-none" />
-  <div className="max-w-[900px] mx-auto px-6 lg:px-10 relative">
+  <div className="max-w-[900px] mx-auto container-px relative">
     <div className="text-center mb-14">
       <div className="flex items-center justify-center gap-3 mb-6">
         <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -552,7 +552,7 @@ const DonatePage = () => {
 
 {/* 5. DONOR TESTIMONIALS */}
 <section className="py-[90px] lg:py-[120px] bg-cream-100 relative overflow-hidden">
-  <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+  <div className="max-w-[1100px] mx-auto container-px">
     <div className="text-center mb-14">
       <div className="flex items-center justify-center gap-3 mb-6">
         <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -621,7 +621,7 @@ const DonatePage = () => {
       {/* 6. FAQ SECTION                                                */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[800px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[800px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />

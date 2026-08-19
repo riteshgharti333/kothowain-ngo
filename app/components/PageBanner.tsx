@@ -40,11 +40,11 @@ const PageBanner = ({
         />
       </div>
 
-      {/* White shade - left side */}
-      <div className="absolute inset-y-0 left-0 w-[75%] bg-gradient-to-r from-cream-50 via-cream-50/90 via-50% to-transparent [mask-image:linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)]" />
+      {/* White shade - left side (very strong on mobile) */}
+      <div className="absolute inset-y-0 left-0 w-full lg:w-[75%] bg-gradient-to-r from-cream-50 via-cream-50 via-50% lg:via-cream-50/90 to-transparent [mask-image:linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)]" />
 
-      {/* Top fade */}
-      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-cream-50 via-cream-50/95 via-20% to-transparent" />
+      {/* Top fade (very strong on mobile) */}
+      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-cream-50 via-cream-50 lg:via-cream-50/95 via-20% to-transparent" />
 
       {/* Torn paper divider */}
       <TornEdgeOrganic
@@ -54,7 +54,7 @@ const PageBanner = ({
         className="z-20"
       />
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative z-10 pt-32 pb-28 w-full">
+      <div className="max-w-[1280px] mx-auto container-px relative z-10 pt-32 pb-28 w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -83,7 +83,9 @@ const PageBanner = ({
             </span>
             <br />
             {headingLine2}{" "}
-            {headingAfter && <span className="text-teal-950">{headingAfter}</span>}
+            {headingAfter && (
+              <span className="text-teal-950">{headingAfter}</span>
+            )}
           </h1>
 
           {/* Description */}

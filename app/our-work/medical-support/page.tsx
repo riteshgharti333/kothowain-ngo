@@ -26,6 +26,7 @@ import {
 import HeadingWithPaint from "../../components/HeadingWithPaint";
 import PageBanner from "../../components/PageBanner";
 import { useState } from "react";
+import SplitSection from "@/app/components/SplitSection";
 
 /* ================================================================== */
 /* Medical-specific reusable components                                */
@@ -194,7 +195,6 @@ const MedicalSupportPage = () => {
       value: "86",
       icon: FiMapPin,
       color: "bg-teal-700",
-      
     },
   ];
 
@@ -306,7 +306,7 @@ const MedicalSupportPage = () => {
       {/* 2. TRIAGE PATH — patient journey                              */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1280px] mx-auto container-px">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             {/* Text */}
             <div>
@@ -424,7 +424,7 @@ const MedicalSupportPage = () => {
         <div className="absolute top-0 left-0 right-0 text-cream-100">
           <HeartbeatDivider />
         </div>
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-10 pt-10">
+        <div className="max-w-[1280px] mx-auto container-px pt-10">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -489,7 +489,7 @@ const MedicalSupportPage = () => {
         <div className="absolute -top-20 right-0 w-[400px] h-[400px] rounded-full bg-amber-500/5 pointer-events-none" />
         <div className="absolute -bottom-20 left-0 w-[300px] h-[300px] rounded-full bg-teal-400/5 pointer-events-none" />
 
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10 relative">
+        <div className="max-w-[1100px] mx-auto container-px relative">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -534,7 +534,7 @@ const MedicalSupportPage = () => {
       {/* NEW SECTION 2: HEALTH CAMP CALENDAR                           */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1000px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -615,7 +615,7 @@ const MedicalSupportPage = () => {
       {/* 5. COMMUNITY HEALTH WORKER SPOTLIGHT                          */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1000px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -714,7 +714,7 @@ const MedicalSupportPage = () => {
       {/* 6. PARTNERS IN HEALTH                                         */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1100px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -763,71 +763,31 @@ const MedicalSupportPage = () => {
       {/* ============================================================ */}
       {/* 7. EMERGENCY CTA                                              */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px]">
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden order-1 lg:order-2 min-h-[280px]"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&h=900&fit=crop&q=80"
-              alt="Emergency medical care"
-              fill
-              className="object-cover"
-              unoptimized
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-teal-950/40 to-transparent lg:from-transparent lg:to-teal-950/60" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-teal-950 p-10 lg:p-14 flex flex-col justify-center relative overflow-hidden order-2 lg:order-1"
-          >
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-amber-500/10" />
-            <div className="absolute top-10 right-20 w-20 h-20 rounded-full bg-teal-400/5" />
-
-            <span className="font-mono text-xs tracking-[0.25em] uppercase text-amber-500 font-bold mb-5 inline-flex items-center gap-2">
-              <FiGift className="w-4 h-4" /> Every gift heals
-            </span>
-
-            <h2 className="font-display font-semibold text-4xl lg:text-5xl text-cream-50 leading-[1.05] tracking-tight mb-4">
-              Fund a{" "}
-              <span className="text-amber-500 italic font-normal">
-                health camp
-              </span>{" "}
-              for a village
-            </h2>
-
-            <p className="text-cream-50/70 text-lg max-w-[420px] leading-relaxed mb-8">
-              One camp treats 200 patients. Your gift brings a doctor, a nurse,
-              and a full medical kit to a village that's never had a clinic.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="#donate"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-amber-500 text-teal-950 font-semibold text-sm transition-all duration-300 hover:bg-cream-50 hover:-translate-y-0.5 active:scale-95"
-              >
-                Fund a Health Camp
-                <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="#volunteer"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border-2 border-cream-50/30 text-cream-50 font-semibold text-sm transition-all duration-300 hover:border-cream-50 hover:bg-cream-50 hover:text-teal-950 hover:-translate-y-0.5 active:scale-95"
-              >
-                Volunteer as a Health Worker
-                <FiHeart className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Health CTA - Same split design */}
+      <SplitSection
+        image="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&h=900&fit=crop&q=80"
+        imageAlt="Emergency medical care"
+        badgeIcon={FiHeart} // Heart icon for health
+        badgeText="Every gift heals"
+        title="Fund a"
+        highlightText="health camp"
+        highlightAfter="for a village"
+        description="One camp treats 200 patients. Your gift brings a doctor, a nurse, and a full medical kit to a village that's never had a clinic."
+        buttons={[
+          {
+            text: "Fund a Health Camp",
+            href: "#donate",
+            icon: FiArrowRight,
+            variant: "primary",
+          },
+          {
+            text: "Volunteer as a Health Worker",
+            href: "#volunteer",
+            icon: FiHeart,
+            variant: "outline",
+          },
+        ]}
+      />
 
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {

@@ -70,7 +70,7 @@ const About = () => {
     >
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-amber-50/30 to-transparent pointer-events-none" />
 
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 relative">
+      <div className="max-w-[1280px] mx-auto px-2 sm:px-5 md:px-6 lg:px-10 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* LEFT MEDIA - Clean Scrapbook Collage */}
           <motion.div
@@ -146,10 +146,9 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-             <HeadingWithPaint text="Building trust where the road doesn't reach" />
-
+              <HeadingWithPaint text="Building trust beyond reach" />
             </motion.div>
-           
+
             {/* Paragraphs */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}

@@ -68,12 +68,12 @@ const Donate = () => {
   };
 
   return (
-    <section className="py-[20px] lg:py-[50px] bg-cream-100 relative overflow-hidden">
+    <section className="py-[50px] bg-cream-100 relative overflow-hidden">
       {/* Decorative blobs */}
       <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full border-[40px] border-amber-500/5 pointer-events-none" />
       <div className="absolute bottom-20 left-10 w-32 h-32 rounded-full bg-teal-950/5 pointer-events-none" />
 
-      <div className="max-w-[900px] mx-auto px-6 lg:px-10 relative">
+      <div className="max-w-[900px] mx-auto px-2 sm:px-5 md:px-6 lg:px-10 relative">
         {/* Section Head */}
         <div className="text-center max-w-[640px] mx-auto mb-14">
           <motion.div

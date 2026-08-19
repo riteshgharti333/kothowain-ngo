@@ -61,7 +61,7 @@ const StoryCards = () => {
 
   return (
     <section className="py-[90px] lg:py-[120px] bg-paper">
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+      <div className="max-w-[1280px] mx-auto px-2 sm:px-5 md:px-6 lg:px-10">
         {/* Header */}
         <div className="text-center mb-14">
           <div className="flex items-center justify-center gap-3 mb-6">

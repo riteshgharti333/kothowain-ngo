@@ -19,10 +19,12 @@ import {
   FiPaperclip,
   FiCheckCircle,
   FiHome,
+  FiBook,
 } from "react-icons/fi";
 import HeadingWithPaint from "../../components/HeadingWithPaint";
 import PageBanner from "../../components/PageBanner";
 import { useState } from "react";
+import SplitSection from "@/app/components/SplitSection";
 
 /* ================================================================== */
 /* Small reusable bits unique to this page                             */
@@ -160,7 +162,7 @@ const EducationPage = () => {
       {/* 2. OPEN NOTEBOOK — mission spread                              */}
       {/* ============================================================ */}
       <section className="bg-paper py-[80px] lg:py-[110px] relative overflow-hidden">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-14 relative">
+        <div className="max-w-[1200px] mx-auto container-px relative">
           <div className="relative grid grid-cols-1 lg:grid-cols-2 rounded-[1.5rem] overflow-hidden shadow-[0_25px_70px_-25px_rgba(21,36,32,0.25)] bg-white">
             <SpiralRings />
 
@@ -255,7 +257,7 @@ const EducationPage = () => {
       {/* 3. TODAY'S SUBJECTS — timetable accordion                     */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-paper">
-        <div className="max-w-[900px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[900px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -295,7 +297,7 @@ const EducationPage = () => {
                       />
                     </span>
                     <span className="flex-1 min-w-0">
-                      <span className="block font-display text-base lg:text-lg text-teal-950 font-semibold">
+                      <span className="block font-display text-sm lg:text-lg text-teal-950 font-semibold">
                         {subject.title}
                       </span>
                       <span className="block text-ink-soft text-xs lg:text-sm">
@@ -349,7 +351,7 @@ const EducationPage = () => {
       {/* 5. REPORT CARD — impact as a graded report                    */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[820px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[820px] mx-auto container-px">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -428,7 +430,7 @@ const EducationPage = () => {
       {/* 6. TEACHER ID CARD                                             */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-paper relative overflow-hidden">
-        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1000px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -524,7 +526,7 @@ const EducationPage = () => {
       {/* 7. STAMPED BY OUR PARTNERS                                     */}
       {/* ============================================================ */}
       <section className="py-[90px] lg:py-[120px] bg-cream-100">
-        <div className="max-w-[1000px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1000px] mx-auto container-px">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="w-8 h-[2px] bg-amber-500 rounded-full" />
@@ -560,67 +562,30 @@ const EducationPage = () => {
         </div>
       </section>
 
-      {/* ============================================================ */}
-      {/* 8. CERTIFICATE CTA                                             */}
-      {/* ============================================================ */}
-      <section className="py-[90px] lg:py-[130px] bg-paper relative overflow-hidden">
-        <div className="max-w-[820px] mx-auto px-6 lg:px-10 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative bg-white rounded-[1.5rem] p-1.5 shadow-[0_30px_70px_-25px_rgba(21,36,32,0.3)]"
-          >
-            <div className="border-2 border-dashed border-amber-500/50 rounded-[1.2rem] px-8 py-14 lg:px-16 lg:py-16 text-center relative">
-              <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-amber-500 font-bold">
-                Certificate of Support
-              </span>
-              <h2 className="font-display font-semibold text-3xl lg:text-5xl text-teal-950 leading-[1.15] tracking-tight mt-4 mb-5">
-                This entitles you to change{" "}
-                <span className="text-amber-500 italic font-normal">
-                  one child's
-                </span>{" "}
-                story
-              </h2>
-              <p className="text-ink-soft text-base max-w-[440px] mx-auto leading-relaxed mb-10">
-                Sponsor a scholarship, fund a learning center, or spend a term
-                teaching. Every gift is signed, sealed, and put to work.
-              </p>
-
-              <div className="flex flex-wrap items-center justify-center gap-5">
-                <Link
-                  href="#donate"
-                  className="group relative inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-amber-500 text-teal-950 font-bold text-sm transition-all duration-300 hover:bg-teal-950 hover:text-amber-400 hover:-translate-y-0.5 active:scale-95"
-                >
-                  Sponsor a Child
-                  <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
-                <Link
-                  href="#volunteer"
-                  className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-full border-2 border-teal-950 text-teal-950 font-bold text-sm transition-all duration-300 hover:bg-teal-950 hover:text-cream-50 hover:-translate-y-0.5 active:scale-95"
-                >
-                  Teach a Term
-                  <FiHeart className="w-4 h-4" />
-                </Link>
-              </div>
-
-              <div className="mt-12 pt-8 border-t border-dashed border-teal-950/15 flex items-center justify-center gap-4">
-                <span className="w-16 h-16 rounded-full bg-teal-950 flex items-center justify-center rotate-[-8deg] shadow-lg flex-shrink-0">
-                  <span className="text-amber-400 font-display font-bold text-[10px] text-center leading-tight">
-                    KOTHO
-                    <br />
-                    WAIN
-                  </span>
-                </span>
-                <p className="text-xs text-ink-soft italic max-w-[220px] text-left">
-                  "The road may stop at the village. Learning shouldn't."
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Certificate CTA - Education themed */}
+      <SplitSection
+        image="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&h=900&fit=crop&q=80"
+        imageAlt="Children learning with books"
+        badgeIcon={FiBook}
+        badgeText="Certificate of Support"
+        title="This entitles you to change"
+        highlightText="one child's"
+        description="Sponsor a scholarship, fund a learning center, or spend a term teaching. Every gift is signed, sealed, and put to work."
+        buttons={[
+          {
+            text: "Sponsor a Child",
+            href: "#donate",
+            icon: FiArrowRight,
+            variant: "primary",
+          },
+          {
+            text: "Teach a Term",
+            href: "#volunteer",
+            icon: FiHeart,
+            variant: "outline",
+          },
+        ]}
+      />
 
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {

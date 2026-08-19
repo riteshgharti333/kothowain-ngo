@@ -23,10 +23,12 @@ const Marquee = () => {
           {items.map((text, index) => (
             <span
               key={index}
-              className="font-display italic text-[22px] text-cream-100 whitespace-nowrap px-10 flex items-center gap-6"
+              className="font-display italic text-base sm:text-lg md:text-[20px] lg:text-[22px] text-cream-100 whitespace-nowrap px-6 sm:px-8 lg:px-10 flex items-center gap-4 sm:gap-6"
             >
               {text}
-              <span className="not-italic text-sm text-amber-500">✦</span>
+              <span className="not-italic text-xs sm:text-sm text-amber-500">
+                ✦
+              </span>
             </span>
           ))}
         </div>
