@@ -137,7 +137,7 @@ const Navbar = () => {
         }`}
       >
         <div className="max-w-[1280px] mx-auto px-2 lg:px-10">
-          <nav className="flex items-center justify-between overflow-hidden">
+          <nav className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative w-10 h-10 sm:w-13 sm:h-13 rounded-xl overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
@@ -159,7 +159,7 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <div
                   key={link.label}
-                  className="relative"
+                  className="relative z-50" // Add z-50 here
                   onMouseEnter={() => handleMouseEnter(link.label)}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -206,7 +206,7 @@ const Navbar = () => {
                           duration: 0.25,
                           ease: [0.25, 0.1, 0.25, 1],
                         }}
-                        className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)] border border-gray-100 py-2 overflow-hidden"
+                        className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)] border border-gray-100 py-2 overflow-hidden z-[100]" // Add z-[100] here
                         onMouseEnter={() => {
                           if (dropdownTimeout.current)
                             clearTimeout(dropdownTimeout.current);
